@@ -11,7 +11,8 @@ import SwiftUI
 struct Liars_diceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let contentViewModel = LDViewModel()
+            ContentView(viewModel: contentViewModel)
         }
     }
 }

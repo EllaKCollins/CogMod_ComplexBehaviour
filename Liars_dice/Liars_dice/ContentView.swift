@@ -19,45 +19,45 @@ import SwiftUI
     
  */
 
-
-
 struct ContentView: View {
+    @ObservedObject var viewModel: LDViewModel
     @State var isActive : Bool = false
 
     var body: some View {
-        VStack {
-            Text("Liars Dice")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(Color.pink)
-            NavigationView {
-                NavigationLink(
-                    destination: GameView(rootIsActive: self.$isActive),
-                    isActive: self.$isActive
-                ) {
-                    VStack{
-                        Image("dice")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Spacer()
+        NavigationView {
+            VStack{
+                Text("Liars Dice")
+                    .font(.system(size:50, design:.serif))
+                    .fontWeight(.black)
+                    .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
+                Spacer()
+                Image("liarsdice_image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                NavigationLink( destination: GameView(viewModel: viewModel) ) {
                         Text("Start game")
-                            .font(.headline)
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color.pink)
+                            .font(.system(.headline, design: .serif))
+                            .fontWeight(.black)
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.pink, lineWidth: 4)
-                            )
-                        Spacer()
-                    }
+                                    .stroke(lineWidth: 4))
                 }
+                    .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
+                Spacer()
+                    .navigationBarHidden(true)
+                    .navigationBarTitle("", displayMode: .inline)
             }
         }
+        
     }
 }
 
-
+/*
+ 
+ }
+ */
 struct ContentView3: View {
     @Binding var shouldPopToRootView : Bool
 
@@ -73,6 +73,7 @@ struct ContentView3: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let contentViewModel = LDViewModel()
+        ContentView(viewModel: contentViewModel)
     }
 }

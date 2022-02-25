@@ -7,12 +7,15 @@
 
 import Foundation
 
-class Game{
+struct Game{
     var num_players: Int
     var bids: [Bid] = []
     var total_die: Int
     var players: [Player] = []
     var hand_size: Int
+    var possible_bid_num: Int = 1
+    var disable_plus = false
+    var disable_minus = true
     
     init(num_players: Int, hand_size: Int) {
         self.num_players = num_players
@@ -28,6 +31,37 @@ class Game{
         for player in players {
             player.hand.roll_die()
         }
+    }
+    
+    mutating func check_button_disable() {
+        if possible_bid_num == total_die {
+            disable_plus = true
+        }
+        else {
+            disable_plus = false
+        }
+        if possible_bid_num == 1 || (bids.count > 0 && possible_bid_num == bids.last?.num){
+            disable_minus = true
+        }
+        else {
+            disable_minus = false
+        }
+    }
+    
+    mutating func change_bid_num(action: String){
+        switch action {
+        case "+":
+            if possible_bid_num < total_die {
+                possible_bid_num += 1
+            }
+        case "-":
+            if possible_bid_num > 0 {
+                possible_bid_num -= 1
+            }
+        default:
+            print("error in change bid num")
+        }
+        check_button_disable()
     }
     
     /* when this is called also show the die in the ui,

@@ -8,61 +8,86 @@
 import Foundation
 import SwiftUI
 
+/* TODO: ideas
+    horizontal layout
+    show opponent die as blank cubes/squares
+    bid on one side and challenge on the other
+    bidding:
+        - last bid number +  with die face click to change
+        - and + can be not allowed buttons
+        "bid" button below : unavailable for not allowed bid
+    dice is removed physically
+    
+ */
 
 struct GameView: View {
-    @Binding var rootIsActive : Bool
+    @ObservedObject var viewModel: LDViewModel
 
-    var body: some View {
-        NavigationLink(destination: ContentView3(shouldPopToRootView: self.$rootIsActive)) {
-            Text("Hello, World #2!")
-        }
-        .isDetailLink(false)
-        .navigationBarTitle("Two")
-    }
-}
-
-
-/*struct GameView: View {
-    
-    var body: some View {
-        Text("whats up liars game")
-            .navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
-    }
-}*/
-
-/*struct ContentView: View {
-    
-    @State var model = Opponent1()
-    
     var body: some View {
         VStack {
-            Text("Liars Dice")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(Color.pink)
-            Image("dice")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            NavigationView {
-                NavigationLink {
-                    GameView()
+            HStack {
+                // Opponent stuff here
+                Text("Opponent 1")
+                Spacer()
+                Text("Opponent 2")
+            }
+            Spacer()
+            // Player stuff here
+            HStack {
+                HStack {
+                    Button {
+                        viewModel.change_bid_num(action: "-")
+                    } label: {
+                        Image(systemName: "minus")
+                    }
+                    .disabled(viewModel.disable_minus)
+                    Text("\(viewModel.possible_bid_num)")
+                        .foregroundColor(.orange)
+                    Button {
+                        viewModel.change_bid_num(action: "+")
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .disabled(viewModel.disable_plus)
+                    Text("dice") // make this a image button
+                }
+                .padding(.all, 6.0)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.orange, lineWidth: 2))
+                .accentColor(.orange)
+
+                Button {
+                    
                 } label: {
-                    Text("Start game")
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
-                        /*.font(.headline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.pink)
-                        .padding()
+                    Text("Bid")
+                        .foregroundColor(.orange)
+                        .padding(.all, 6.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.pink, lineWidth: 4)
-                        )*/
+                                .stroke(Color.orange, lineWidth: 2)
+                            )
                 }
+                .background(Color.yellow)
+                .cornerRadius(16)
+                Spacer()
+                Text("Player Hand")
+                Spacer()
+                Button {
+            
+                } label: {
+                    Text("Challenge")
+                        .foregroundColor(.orange)
+                        .padding(.all, 6.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.orange, lineWidth: 2)
+                            )
+                }
+                .background(Color.yellow)
+                .cornerRadius(16)
             }
         }
+        .padding()
     }
 }
-*/
