@@ -8,10 +8,10 @@
 import Foundation
 
 class Bid {
-    var face: Int
+    var face: String
     var num: Int
     
-    init(face: Int, num: Int) {
+    init(face: String, num: Int) {
         self.face = face
         self.num = num
     }

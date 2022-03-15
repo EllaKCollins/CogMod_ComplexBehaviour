@@ -21,7 +21,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: LDViewModel
-    @State var isActive : Bool = false
 
     var body: some View {
         NavigationView {
@@ -37,7 +36,7 @@ struct ContentView: View {
                 Spacer()
                 NavigationLink( destination: GameView(viewModel: viewModel) ) {
                         Text("Start game")
-                            .font(.system(.headline, design: .serif))
+                        .font(.system(.headline, design: .serif))
                             .fontWeight(.black)
                             .padding()
                             .overlay(
@@ -50,26 +49,11 @@ struct ContentView: View {
                     .navigationBarTitle("", displayMode: .inline)
             }
         }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+    
 }
 
-/*
- 
- }
- */
-struct ContentView3: View {
-    @Binding var shouldPopToRootView : Bool
-
-    var body: some View {
-        VStack {
-            Text("Hello, World #3!")
-            Button (action: { self.shouldPopToRootView = false } ){
-                Text("Pop to root")
-            }
-        }.navigationBarTitle("Three")
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

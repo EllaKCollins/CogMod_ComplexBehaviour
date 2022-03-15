@@ -15,16 +15,60 @@ class LDViewModel: ObservableObject {
         model.possible_bid_num
     }
     
+    var bids: [Bid]{
+        model.bids
+    }
+    
+    var current_player: Int {
+        model.current_player
+    }
+    
     var disable_minus: Bool {
         model.disable_minus
+    }
+    
+    var disable_bid_chall: Bool {
+        model.disable_bid_chall
+    }
+    
+    var players: [Player] {
+        model.players
     }
     
     var disable_plus: Bool {
         model.disable_plus
     }
     
+    var current_bid_dice: String {
+        model.current_bid_dice
+    }
+    
+    var still_bidding: Bool {
+        model.still_bidding
+    }
+    
+    func stop_bidding(){
+        model.stop_bidding()
+    }
+    
+    func roll(){
+        model.roll()
+    }
+    
+    func change_bid_dice(){
+        model.change_current_bid_dice()
+    }
+    
     func change_bid_num(action: String){
         model.change_bid_num(action: action)
+    }
+    
+    func challenge_bid(){
+        model.challenge_bid()
+    }
+    
+    func human_bid(){
+        model.human_bid()
     }
     
 }

@@ -15,12 +15,19 @@ class Opponent1: Player {
         model.loadModel(fileName: "")  //TODO: insert name of act-r model here
     }
     
-    func run_opponent(){
-        if step_num == 0 {
-            loadModel()
-        }
+    
+    override func run_opponent() -> Bid{
+//        if step_num == 0 {
+//            loadModel()
+//        }
         step_num += 1
         
-        model.run()
+        //model.run()
+        
+        if self.name == "ACT-R model 1" {
+            return Bid(face: "four", num: 3)
+        }
+        
+        return Bid(face: "three", num: 2)
     }
 }
