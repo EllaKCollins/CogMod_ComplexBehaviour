@@ -23,7 +23,7 @@ import SwiftUI
 struct GameView: View {
     @ObservedObject var viewModel: LDViewModel
     @ScaledMetric var scale: CGFloat = 1
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
 
     @State var display_dice: String = "one"
     @State var display_bid: Int = 1
@@ -32,18 +32,25 @@ struct GameView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 // Opponent stuff here
-                VStack{
+                if viewModel.current_player == 1 && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("Opponent 1")
+                        .padding(.all, 12.0)
                         .rotationEffect(Angle(degrees: -90))
-                    Spacer()
-                    if viewModel.current_player == 1 { //  && viewModel.players[1]
-                        Text("its my turn")
-                            .onReceive(timer) { _ in
-                                viewModel.human_bid()
-                            }
-                    }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.orange, lineWidth: 2)
+                                .rotationEffect(Angle(degrees: -90)))
+                        .onReceive(timer) { _ in
+                            viewModel.human_bid()
+                        }
+                }
+                else {
+                    Text("Opponent 1")
+                        .padding(.all, 12.0)
+                        .rotationEffect(Angle(degrees: -90))
                 }
                 // opponent 1's hand
                 VStack {
@@ -61,21 +68,48 @@ struct GameView: View {
                     }
                 }
                 Spacer()
-                // Bids!
-                if viewModel.bids.isEmpty == false && !viewModel.game_over {
-                    Text("\(viewModel.bids.last!.num)")
-                        .onReceive(timer) { _ in
-                            display_bid = viewModel.bids.last!.num
+                VStack {
+                    // Bids!
+                    Spacer()
+                    HStack{
+                        if viewModel.bids.isEmpty == false && !viewModel.game_over {
+                            
+                            Text("\(viewModel.bids.last!.num)")
+                                .onReceive(timer) { _ in
+                                    display_bid = viewModel.bids.last!.num
+                                }
+                            Image(viewModel.bids.last!.face)
+                                .resizable()
+                                .frame(width: dice_size * scale, height: dice_size * scale)
+                                .onReceive(timer) { _ in
+                                    display_dice = viewModel.bids.last!.face
+                                }
                         }
-                    Image(viewModel.bids.last!.face)
-                        .resizable()
-                        .frame(width: dice_size * scale, height: dice_size * scale)
-                        .onReceive(timer) { _ in
-                            display_dice = viewModel.bids.last!.face
+                    }
+                    if viewModel.game_over {
+                        Text("Game over \n \(viewModel.winner) won")
+                    }
+                    Spacer()
+                    if !viewModel.still_bidding {
+                        Button {
+                            viewModel.roll()
+                        } label: {
+                            if viewModel.game_over {
+                                Text("New game")
+                            }
+                            else {
+                                Text("Roll")
+                            }
                         }
-                }
-                if viewModel.game_over {
-                    Text("Game over \n \(viewModel.winner) won")
+                        .padding(.all, 12.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.orange, lineWidth: 4)
+                            )
+                        .cornerRadius(16)
+                        .accentColor(.orange)
+                    }
+
                 }
                 Spacer()
                 // opponent 2's hand
@@ -93,16 +127,22 @@ struct GameView: View {
                         }
                     }
                 }
-                VStack{
+                if viewModel.current_player == 2  && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("Opponent 2")
-                        .rotationEffect(Angle(degrees: 90))
-                    Spacer()
-                    if viewModel.current_player == 2 {
-                        Text("its my turn")
-                            .onReceive(timer) { _ in
-                                viewModel.human_bid()
-                            }
-                    }
+                        .padding(.all, 12.0)
+                        .rotationEffect(Angle(degrees: -90))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.orange, lineWidth: 2)
+                                .rotationEffect(Angle(degrees: -90)))
+                        .onReceive(timer) { _ in
+                            viewModel.human_bid()
+                        }
+                }
+                else {
+                    Text("Opponent 2")
+                        .padding(.all, 12.0)
+                        .rotationEffect(Angle(degrees: -90))
                 }
             }
             Spacer()
@@ -162,33 +202,25 @@ struct GameView: View {
                 .cornerRadius(16)
                 .accentColor(.orange)
                 Spacer()
-                if !viewModel.still_bidding {
-                    Button {
-                        viewModel.roll()
-                    } label: {
-                        if viewModel.game_over {
-                            Text("New game")
-                        }
-                        else {
-                            Text("Roll")
-                        }
-                    }
-                    .padding(.all, 12.0)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.orange, lineWidth: 4)
-                        )
-                    .cornerRadius(16)
-                    .accentColor(.orange)
+                if viewModel.current_player == 0 && viewModel.still_bidding { //  && viewModel.players[1]
+                    Text("You")
+                        .padding(.all, 12.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.orange, lineWidth: 2))
                 }
-
+                else {
+                    Text("You")
+                        .padding(.all, 12.0)
+                }
                 Spacer()
                 Button {
                     viewModel.stop_bidding()
                     viewModel.challenge_bid()
                 } label: {
                     Text("Challenge")
-                        .padding(.all, 12.0)
+                        .padding(.horizontal, 60)
+                        .padding(.vertical, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.orange, lineWidth: 4)

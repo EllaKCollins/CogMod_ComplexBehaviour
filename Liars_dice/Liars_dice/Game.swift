@@ -27,11 +27,11 @@ struct Game{
     
     init(num_players: Int, hand_size: Int) {
         self.num_players = num_players
-        players.append(Player(name: "You", num_die: hand_size, still_in: true))
         self.hand_size = hand_size
+        players.append(Player(name: "You", num_die: self.hand_size, still_in: true))
         self.total_die = self.num_players * self.hand_size
         for i in 1...(num_players-1) {
-            players.append(Opponent1(name: "ACT-R model " + String(i) , num_die: hand_size, still_in: true))
+            players.append(Opponent1(name: "ACT-R model " + String(i) , num_die: self.hand_size, still_in: true))
         }
     }
     
@@ -53,7 +53,7 @@ struct Game{
     }
     
     mutating func start_round(){
-        total_die -= 1
+        print(total_die)
         for player in players {
             if player.still_in {
                 player.hand.roll_die()
@@ -74,6 +74,9 @@ struct Game{
         still_bidding = true
         self.start_round()
         self.bids.removeAll()
+        possible_bid_num = 1
+        current_bid_dice = "one"
+        check_valid_bid()
     }
     
     mutating func change_current_bid_dice(){
@@ -100,6 +103,9 @@ struct Game{
             else {
                 not_valid_bid = false
             }
+        }
+        else {
+            not_valid_bid = false
         }
     }
     
@@ -229,6 +235,7 @@ struct Game{
                 current_player = retrieve_next_player(current: current_player)
             }
         }
+        total_die -= 1
         var count = 0
         for player in players {
             if player.still_in {
