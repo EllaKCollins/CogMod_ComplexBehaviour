@@ -35,8 +35,16 @@ class LDViewModel: ObservableObject {
         model.players
     }
     
+    var winner: String {
+        model.winner
+    }
+    
     var disable_plus: Bool {
         model.disable_plus
+    }
+    
+    var not_valid_bid: Bool {
+        model.not_valid_bid
     }
     
     var current_bid_dice: String {
@@ -45,6 +53,10 @@ class LDViewModel: ObservableObject {
     
     var still_bidding: Bool {
         model.still_bidding
+    }
+    
+    var game_over: Bool {
+        model.game_over
     }
     
     func stop_bidding(){
@@ -69,6 +81,10 @@ class LDViewModel: ObservableObject {
     
     func human_bid(){
         model.human_bid()
+    }
+    
+    func end_game() -> String{
+        model.end_game()
     }
     
 }

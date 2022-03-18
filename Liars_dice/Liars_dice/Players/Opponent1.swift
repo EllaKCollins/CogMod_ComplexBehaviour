@@ -28,6 +28,6 @@ class Opponent1: Player {
             return Bid(face: "four", num: 3)
         }
         
-        return Bid(face: "three", num: 2)
+        return Bid(face: "three", num: 4)
     }
 }

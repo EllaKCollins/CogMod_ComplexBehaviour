@@ -45,6 +45,7 @@ struct GameView: View {
                             }
                     }
                 }
+                // opponent 1's hand
                 VStack {
                     ForEach(viewModel.players[1].hand.faces.indices, id: \.self) { dice in
                         if viewModel.still_bidding {
@@ -60,7 +61,8 @@ struct GameView: View {
                     }
                 }
                 Spacer()
-                if viewModel.bids.isEmpty == false {
+                // Bids!
+                if viewModel.bids.isEmpty == false && !viewModel.game_over {
                     Text("\(viewModel.bids.last!.num)")
                         .onReceive(timer) { _ in
                             display_bid = viewModel.bids.last!.num
@@ -72,7 +74,11 @@ struct GameView: View {
                             display_dice = viewModel.bids.last!.face
                         }
                 }
+                if viewModel.game_over {
+                    Text("Game over \n \(viewModel.winner) won")
+                }
                 Spacer()
+                // opponent 2's hand
                 VStack {
                     ForEach(viewModel.players[2].hand.faces.indices, id: \.self) { dice in
                         if viewModel.still_bidding {
@@ -146,53 +152,52 @@ struct GameView: View {
 
                 } label: {
                     Text("Bid")
-                        .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.orange, lineWidth: 2)
+                                .stroke(Color.orange, lineWidth: 4)
                             )
                 }
-                .disabled((viewModel.current_player != 0) || !viewModel.still_bidding)
-                .background(Color.orange)
+                .disabled((viewModel.current_player != 0) || !viewModel.still_bidding || viewModel.not_valid_bid)
                 .cornerRadius(16)
+                .accentColor(.orange)
                 Spacer()
                 if !viewModel.still_bidding {
                     Button {
                         viewModel.roll()
                     } label: {
-                        Text("Roll")
+                        if viewModel.game_over {
+                            Text("New game")
+                        }
+                        else {
+                            Text("Roll")
+                        }
                     }
-                    .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
                     .padding(.all, 12.0)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.orange, lineWidth: 2)
+                            .stroke(Color.orange, lineWidth: 4)
                         )
-                    .background(Color.orange)
                     .cornerRadius(16)
+                    .accentColor(.orange)
                 }
+
                 Spacer()
                 Button {
-                    // implement challenging
                     viewModel.stop_bidding()
-                    //sleep(5)
-                    // pause for a second as things are highlighted
-                    // then reveal result and loose dice
                     viewModel.challenge_bid()
                 } label: {
                     Text("Challenge")
-                        .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.orange, lineWidth: 2)
+                                .stroke(Color.orange, lineWidth: 4)
                             )
                 }
                 .disabled((viewModel.current_player != 0) || !viewModel.still_bidding || viewModel.bids.isEmpty)
-                .background(Color.orange)
                 .cornerRadius(16)
-                
+                .accentColor(.orange)
+                // Color(red: 0.719, green: 0.002, blue: 0.312)
             }
         }
         .padding()
