@@ -28,6 +28,8 @@ struct GameView: View {
     @State var display_dice: String = "one"
     @State var display_bid: Int = 1
     
+    @State var current_loser = ""
+    
     var dice_size: CGFloat = 30
     
     var body: some View {
@@ -60,6 +62,15 @@ struct GameView: View {
                                 .resizable()
                                 .frame(width: dice_size * scale, height: dice_size * scale)
                         }
+                        else if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[1].hand.faces[dice]{
+                            Image(viewModel.players[1].hand.faces[dice])
+                                .resizable()
+                                .frame(width: dice_size * scale, height: dice_size * scale)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.red, lineWidth: 3)
+                                    )
+                        }
                         else {
                             Image(viewModel.players[1].hand.faces[dice])
                                 .resizable()
@@ -73,19 +84,34 @@ struct GameView: View {
                     Spacer()
                     HStack{
                         if viewModel.bids.isEmpty == false && !viewModel.game_over {
-                            
-                            Text("\(viewModel.bids.last!.num)")
-                                .onReceive(timer) { _ in
-                                    display_bid = viewModel.bids.last!.num
+                            VStack{
+                                Text("\(viewModel.players[viewModel.retrieve_previous_player(curr: viewModel.current_player)].name) bid")
+                                HStack{
+                                    Text("\(viewModel.bids.last!.num)")
+                                        .onReceive(timer) { _ in
+                                            display_bid = viewModel.bids.last!.num
+                                        }
+                                    Image(viewModel.bids.last!.face)
+                                        .resizable()
+                                        .frame(width: dice_size * scale, height: dice_size * scale)
+                                        .onReceive(timer) { _ in
+                                            display_dice = viewModel.bids.last!.face
+                                        }
                                 }
-                            Image(viewModel.bids.last!.face)
-                                .resizable()
-                                .frame(width: dice_size * scale, height: dice_size * scale)
-                                .onReceive(timer) { _ in
-                                    display_dice = viewModel.bids.last!.face
-                                }
+                            }
                         }
+                        
                     }
+                    if viewModel.challenged && !viewModel.challenge_over {
+                        Text("\(current_loser)")
+                            .onReceive(timer) { _ in
+                                current_loser = viewModel.players[viewModel.challenge_bid()].name + " lost"
+                            }
+                        
+                    } else if viewModel.challenged && viewModel.challenge_over {
+                        Text("\(current_loser)")
+                    }
+                    
                     if viewModel.game_over {
                         Text("Game over \n \(viewModel.winner) won")
                     }
@@ -93,6 +119,7 @@ struct GameView: View {
                     if !viewModel.still_bidding {
                         Button {
                             viewModel.roll()
+                            current_loser = ""
                         } label: {
                             if viewModel.game_over {
                                 Text("New game")
@@ -119,6 +146,15 @@ struct GameView: View {
                             Image("face_down")
                                 .resizable()
                                 .frame(width: dice_size * scale, height: dice_size * scale)
+                        }
+                        else if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[2].hand.faces[dice]{
+                            Image(viewModel.players[2].hand.faces[dice])
+                                .resizable()
+                                .frame(width: dice_size * scale, height: dice_size * scale)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.red, lineWidth: 3)
+                                    )
                         }
                         else {
                             Image(viewModel.players[2].hand.faces[dice])
@@ -149,9 +185,20 @@ struct GameView: View {
             // Player hand
             HStack {
                 ForEach(viewModel.players[0].hand.faces.indices, id: \.self){ dice in
-                    Image(viewModel.players[0].hand.faces[dice])
-                        .resizable()
-                        .frame(width: dice_size * scale, height: dice_size * scale)
+                    if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[0].hand.faces[dice]{
+                        Image(viewModel.players[0].hand.faces[dice])
+                            .resizable()
+                            .frame(width: dice_size * scale, height: dice_size * scale)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(.red, lineWidth: 3)
+                                )
+                    }
+                    else {
+                        Image(viewModel.players[0].hand.faces[dice])
+                            .resizable()
+                            .frame(width: dice_size * scale, height: dice_size * scale)
+                    }
                 }
             }
             // Player stuff here
@@ -216,7 +263,8 @@ struct GameView: View {
                 Spacer()
                 Button {
                     viewModel.stop_bidding()
-                    viewModel.challenge_bid()
+                    viewModel.change_challenge()
+                   // viewModel.challenge_bid()
                 } label: {
                     Text("Challenge")
                         .padding(.horizontal, 60)

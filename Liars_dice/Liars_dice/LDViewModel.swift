@@ -59,6 +59,14 @@ class LDViewModel: ObservableObject {
         model.game_over
     }
     
+    var challenged: Bool {
+        model.challenged
+    }
+    
+    var challenge_over: Bool {
+        model.challenge_over
+    }
+    
     func stop_bidding(){
         model.stop_bidding()
     }
@@ -75,8 +83,8 @@ class LDViewModel: ObservableObject {
         model.change_bid_num(action: action)
     }
     
-    func challenge_bid(){
-        model.challenge_bid()
+    func challenge_bid() -> Int {
+        return model.challenge_bid()
     }
     
     func human_bid(){
@@ -89,6 +97,14 @@ class LDViewModel: ObservableObject {
     
     func model_run() {
         model.model_run()
+    }
+    
+    func retrieve_previous_player(curr: Int) -> Int  {
+        return model.retrieve_previous_player(current: curr)
+    }
+    
+    func change_challenge(){
+        model.change_challenge()
     }
     
 }
