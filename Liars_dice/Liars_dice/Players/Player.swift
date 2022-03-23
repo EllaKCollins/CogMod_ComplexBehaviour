@@ -19,7 +19,15 @@ class Player {
         self.still_in = still_in
     }
     
-    func run_opponent() -> Bid{
-        return Bid(face: "one", num: 1)
+    func run_opponent() -> (String, String){
+        return ("sup", "bro")
+    }
+    
+    func send_info(last_bid: Bid){
+        
+    }
+    
+    func send_hand(){
+        
     }
 }

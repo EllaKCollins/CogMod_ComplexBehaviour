@@ -87,4 +87,8 @@ class LDViewModel: ObservableObject {
         model.end_game()
     }
     
+    func model_run() {
+        model.model_run()
+    }
+    
 }

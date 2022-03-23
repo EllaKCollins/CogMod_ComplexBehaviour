@@ -31,7 +31,9 @@ struct Game{
         players.append(Player(name: "You", num_die: self.hand_size, still_in: true))
         self.total_die = self.num_players * self.hand_size
         for i in 1...(num_players-1) {
-            players.append(Opponent1(name: "ACT-R model " + String(i) , num_die: self.hand_size, still_in: true))
+            let temp = Opponent1(name: "ACT-R model " + String(i) , num_die: self.hand_size, still_in: true)
+            temp.load_model()
+            players.append(temp)
         }
     }
     
@@ -57,7 +59,7 @@ struct Game{
         for player in players {
             if player.still_in {
                 player.hand.roll_die()
-                print(player.hand.faces)
+                player.send_hand() // only has a functionality if the player is an opponent
             }
         }
     }
@@ -195,23 +197,32 @@ struct Game{
     }
     
     mutating func human_bid(){
-        if current_player == 0 {
-            // human player
-            let cur_bid = Bid(face: current_bid_dice, num: possible_bid_num)
-            bids.append(cur_bid)
-            
-        }
-        else {
-            // one of the actr models do a thing :)
-            let cur_bid = players[current_player].run_opponent()
-            bids.append(cur_bid)
-            possible_bid_num = cur_bid.num
-            current_bid_dice = cur_bid.face
-        }
-        // move turn
+        // human player
+        let cur_bid = Bid(face: current_bid_dice, num: possible_bid_num)
+        bids.append(cur_bid)
+        
         current_player = retrieve_next_player(current: current_player)
         check_button_disable()
         check_valid_bid()
+    }
+    
+    mutating func model_run(){
+        // send last bid to model
+        let last_bid = bids.last!
+        players[current_player].send_info(last_bid: last_bid)
+        
+        let (face, num) = players[current_player].run_opponent()
+        print(face, num)
+        if face == "challenge" {
+            self.challenge_bid()
+        }
+        else {
+            let model_bid = Bid(face: face, num: Int(num)!)
+            bids.append(model_bid)
+            
+            current_player = retrieve_next_player(current: current_player)
+            check_button_disable()
+        }
     }
     
     mutating func challenge_bid() {

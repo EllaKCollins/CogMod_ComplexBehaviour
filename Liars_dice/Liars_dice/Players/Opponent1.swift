@@ -11,23 +11,34 @@ class Opponent1: Player {
     var model = Model()
     var step_num = 0
     
-    func loadModel(){
-        model.loadModel(fileName: "")  //TODO: insert name of act-r model here
+    func load_model(){
+        model.loadModel(fileName: "liarsDice")  //TODO: insert name of act-r model here
     }
     
-    
-    override func run_opponent() -> Bid{
-//        if step_num == 0 {
-//            loadModel()
-//        }
-        step_num += 1
+    override func run_opponent() -> (String, String){
         
-        //model.run()
-        
-        if self.name == "ACT-R model 1" {
-            return Bid(face: "four", num: 3)
+        model.run()
+        let decision = model.lastAction(slot: "previous")!
+        if decision != "challenge" {
+            let face = model.lastAction(slot: "currentbidf")!
+            let num = model.lastAction(slot: "currentbidn")!
+            return (face, num)
         }
-        
-        return Bid(face: "three", num: 4)
+        return (decision, "")
+      
     }
+    
+    override func send_info(last_bid: Bid){
+        model.modifyLastAction(slot: "currentbidf", value: last_bid.face)
+        model.modifyLastAction(slot: "currentbidn", value: String(last_bid.num))
+    }
+    
+    override func send_hand(){
+        let poss = ["one", "two", "three", "four", "five", "six"]
+        for x in poss {
+            let count = self.hand.faces.filter({$0 == x}).count
+            model.modifyLastAction(slot: x, value: String(count))
+        }
+    }
+    
 }

@@ -44,7 +44,7 @@ struct GameView: View {
                                 .stroke(.orange, lineWidth: 2)
                                 .rotationEffect(Angle(degrees: -90)))
                         .onReceive(timer) { _ in
-                            viewModel.human_bid()
+                            viewModel.model_run()
                         }
                 }
                 else {
@@ -136,7 +136,7 @@ struct GameView: View {
                                 .stroke(.orange, lineWidth: 2)
                                 .rotationEffect(Angle(degrees: -90)))
                         .onReceive(timer) { _ in
-                            viewModel.human_bid()
+                            viewModel.model_run()
                         }
                 }
                 else {

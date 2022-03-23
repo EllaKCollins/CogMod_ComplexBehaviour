@@ -18,6 +18,7 @@
     (bidface4 isa bidface face "four" nextface "five" previous "three")
     (bidface5 isa bidface face "five" nextface "six" previous "four")
     (bidface6 isa bidface face "six" nextface nil previous "five")
+    (bidface7 isa bidface face "challenge" nextface "challenge" previous "challenge")
     
     ;;information needed from Swift
     (currenth isa hand
@@ -65,6 +66,7 @@
         - isreasonable >=1 ;;is not reasonable 
 ==>
     !output! ("challenge")
+    previous =challenge
 )
 
 (p make-bid
@@ -109,8 +111,9 @@
         bidnumber =currentbidn
         currenth =currentbidf
 ==>
-    +retrieval>
+    +action>
         previous =currentbidn
+    
 )
 
 ;;increase bid face
@@ -121,7 +124,7 @@
         bidface =currentbidf
         bidnumber =currentbidn
 ==>
-    +retrieval>
+    +action>
         previous =currentbidf
 )
 
