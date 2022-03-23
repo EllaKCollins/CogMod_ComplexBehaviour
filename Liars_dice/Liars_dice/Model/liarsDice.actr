@@ -1,9 +1,133 @@
-;;; Model of Liars Dice
+;;; Model of Lie-R
 ;;;
-
+;;;
+;;(set-all-baselevels -100 10) ;; time offset and number of references
 
 (add-dm
+    ;;bidnumbers (incomplete)
+    (bidnumber1 isa bidnumber number 1 nextnumber 2 previous nil)
+    (bidnumber2 isa bidnumber number 2 nextnumber 3 previous 1)
+    (bidnumber3 isa bidnumber number 3 nextnumber 4 previous 2)
+    (bidnumber4 isa bidnumber number 4 nextnumber 5 previous 3)
+    (bidnumber5 isa bidnumber number 5 previous 4)
     
+    ;;bidfaces
+    (bidface1 isa bidface face "one" nextface "two" previous nil)
+    (bidface2 isa bidface face "two" nextface "three" previous "one")
+    (bidface3 isa bidface face "three" nextface "four" previous "two")
+    (bidface4 isa bidface face "four" nextface "five" previous "three")
+    (bidface5 isa bidface face "five" nextface "six" previous "four")
+    (bidface6 isa bidface face "six" nextface nil previous "five")
+    
+    ;;information needed from Swift
+    (currenth isa hand
+        one 1
+        two 1
+        three 1
+        four 1
+        five 1
+        six 1)
+    (current-state isa state
+        totaldie 15
+        currentbidf bidface1
+        currentbidn bidnumber1
+        currenthand currenth
+        isreasonable 1
+    )
+    (goal isa goal state start)
 )
 
-(set-all-baselevels -100 10) ;; time offset and number of references
+;; reasonable and bid
+(p reasonable-make-bid
+    =goal>
+        isa goal
+    =retrieval>
+        isa current-state
+        currentbidface =currentbidf
+        currentbidnumber =currentbidn
+        totaldie =n
+        currenthand =currenth
+        isreasonable >=1 ;;is reasonable 
+==>
+    =goal>
+        state make-bid
+)
+;; not reasonable and call challenge
+(p not-reasonable
+    =goal>
+        isa goal
+    =retrieval>
+        isa current-state
+        currentbidface =currentbidf
+        currentbidnumber =currentbidn
+        totaldie =n
+        currenthand =currenth
+        - isreasonable >=1 ;;is not reasonable 
+==>
+    !output! ("challenge")
+)
+
+(p make-bid
+    =goal>
+        isa goal
+    =retrieval>
+        currenth =currentbidf
+==>
+    =goal>
+        state make-bid-num
+)
+
+;;if current face in hand, increase number
+(p make-bid-num
+    =goal>
+        isa goal
+    =retrieval>
+        currenth =currentbidf ;;current face in hand
+==>
+    =goal>
+        state bid-increase-num
+)
+
+;;if current face not in hand, change face
+;;TODO: make 'recursive' in case next face not in hand
+(p make-bid-face
+    =goal>
+        isa goal
+    =retrieval>
+        - currenth =currentbidf ;;current face not in hand
+==>
+    =goal>
+        state bid-increase-face ;;to add: check other options
+)
+
+;;increase bid number
+(p bid-increase-num
+    =goal>
+        isa goal
+    =retrieval>
+        bidface =currentbidf
+        bidnumber =currentbidn
+        currenth =currentbidf
+==>
+    +retrieval>
+        previous =currentbidn
+)
+
+;;increase bid face
+(p bid-increase-face
+    =goal>
+        isa goal
+    =retrieval>
+        bidface =currentbidf
+        bidnumber =currentbidn
+==>
+    +retrieval>
+        previous =currentbidf
+)
+
+
+(goal-focus goal)
+
+
+
+
