@@ -28,7 +28,7 @@ struct ContentView: View {
                 Text("Liars Dice")
                     .font(.system(size:50, design:.serif))
                     .fontWeight(.black)
-                    .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
+                    .foregroundColor(Color("base_colour"))
                 Spacer()
                 Image("liarsdice_image")
                     .resizable()
@@ -43,15 +43,20 @@ struct ContentView: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(lineWidth: 4))
                 }
-                    .foregroundColor(Color(red: 0.719, green: 0.002, blue: 0.312))
+                    .foregroundColor(Color("base_colour"))  // 3, 4, 94
                 Spacer()
                     .navigationBarHidden(true)
                     .navigationBarTitle("", displayMode: .inline)
             }
+            .background(
+                Image("back")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }
 
 

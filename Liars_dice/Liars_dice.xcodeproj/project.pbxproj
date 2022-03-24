@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0E1B320E27BEB66900D51A18 /* Liars_diceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B320D27BEB66900D51A18 /* Liars_diceApp.swift */; };
 		0E1B321027BEB66900D51A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B320F27BEB66900D51A18 /* ContentView.swift */; };
-		0E1B321227BEB66A00D51A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B321127BEB66A00D51A18 /* Assets.xcassets */; };
 		0E1B321527BEB66A00D51A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B321427BEB66A00D51A18 /* Preview Assets.xcassets */; };
 		0E1B324F27BEB8EF00D51A18 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B323E27BEB8EF00D51A18 /* SlotAction.swift */; };
 		0E1B325027BEB8EF00D51A18 /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B323F27BEB8EF00D51A18 /* BufferCondition.swift */; };
@@ -36,6 +35,7 @@
 		0E1B326E27BFB8DA00D51A18 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326D27BFB8DA00D51A18 /* Player.swift */; };
 		0E866E9727C79E2200A5FA9E /* LDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E866E9627C79E2200A5FA9E /* LDViewModel.swift */; };
 		0EB523FD27C62FB100A94F4C /* liarsDice.actr in Resources */ = {isa = PBXBuildFile; fileRef = 0EB523FC27C62FB100A94F4C /* liarsDice.actr */; };
+		0EC9CF8F27EC8DAF00E93B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B321127BEB66A00D51A18 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,8 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E1B321527BEB66A00D51A18 /* Preview Assets.xcassets in Resources */,
+				0EC9CF8F27EC8DAF00E93B13 /* Assets.xcassets in Resources */,
 				0EB523FD27C62FB100A94F4C /* liarsDice.actr in Resources */,
-				0E1B321227BEB66A00D51A18 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +406,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "s3327469.Liars-dice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Liars_dice;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -434,7 +434,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "s3327469.Liars-dice";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Liars_dice;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

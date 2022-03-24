@@ -43,7 +43,7 @@ struct GameView: View {
                         .rotationEffect(Angle(degrees: -90))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(.orange, lineWidth: 2)
+                                .stroke(Color("second_colour"), lineWidth: 2)
                                 .rotationEffect(Angle(degrees: -90)))
                         .onReceive(timer) { _ in
                             viewModel.model_run()
@@ -131,10 +131,10 @@ struct GameView: View {
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.orange, lineWidth: 4)
+                                .stroke(Color("second_colour"), lineWidth: 4)
                             )
                         .cornerRadius(16)
-                        .accentColor(.orange)
+                        .accentColor(Color("second_colour"))
                     }
 
                 }
@@ -169,7 +169,7 @@ struct GameView: View {
                         .rotationEffect(Angle(degrees: -90))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(.orange, lineWidth: 2)
+                                .stroke(Color("second_colour"), lineWidth: 2)
                                 .rotationEffect(Angle(degrees: -90)))
                         .onReceive(timer) { _ in
                             viewModel.model_run()
@@ -212,7 +212,7 @@ struct GameView: View {
                     .padding(.horizontal, 5.0)
                     .disabled(viewModel.disable_minus)
                     Text("\(viewModel.possible_bid_num)")
-                        .foregroundColor(.orange)
+                        .foregroundColor(Color("base_colour"))
                     Button {
                         viewModel.change_bid_num(action: "+")
                     } label: {
@@ -231,8 +231,8 @@ struct GameView: View {
                 .padding(.all, 8.0)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.orange, lineWidth: 2))
-                .accentColor(.orange)
+                        .stroke(Color("base_colour"), lineWidth: 2))
+                .accentColor(Color("base_colour"))
                 Button {
                     // implement bidding here !
                     viewModel.human_bid()
@@ -242,19 +242,19 @@ struct GameView: View {
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.orange, lineWidth: 4)
+                                .stroke(Color("base_colour"), lineWidth: 4)
                             )
                 }
                 .disabled((viewModel.current_player != 0) || !viewModel.still_bidding || viewModel.not_valid_bid)
                 .cornerRadius(16)
-                .accentColor(.orange)
+                .accentColor(Color("base_colour"))
                 Spacer()
                 if viewModel.current_player == 0 && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("You")
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(.orange, lineWidth: 2))
+                                .stroke(Color("second_colour"), lineWidth: 2))
                 }
                 else {
                     Text("You")
@@ -271,15 +271,22 @@ struct GameView: View {
                         .padding(.vertical, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.orange, lineWidth: 4)
+                                .stroke(Color("base_colour"), lineWidth: 4)
                             )
                 }
                 .disabled((viewModel.current_player != 0) || !viewModel.still_bidding || viewModel.bids.isEmpty)
                 .cornerRadius(16)
-                .accentColor(.orange)
+                .accentColor(Color("base_colour"))
                 // Color(red: 0.719, green: 0.002, blue: 0.312)
             }
         }
         .padding()
-    }    
+        .background(
+            Image("back")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                )
+    }
+    
 }
