@@ -39,6 +39,7 @@ struct GameView: View {
                 // Opponent stuff here
                 if viewModel.current_player == 1 && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("Opponent 1")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .rotationEffect(Angle(degrees: -90))
                         .overlay(
@@ -51,6 +52,7 @@ struct GameView: View {
                 }
                 else {
                     Text("Opponent 1")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .rotationEffect(Angle(degrees: -90))
                 }
@@ -86,8 +88,10 @@ struct GameView: View {
                         if viewModel.bids.isEmpty == false && !viewModel.game_over {
                             VStack{
                                 Text("\(viewModel.players[viewModel.retrieve_previous_player(curr: viewModel.current_player)].name) bid")
+                                    .font(.headline)
                                 HStack{
                                     Text("\(viewModel.bids.last!.num)")
+                                        .font(.headline)
                                         .onReceive(timer) { _ in
                                             display_bid = viewModel.bids.last!.num
                                         }
@@ -104,28 +108,33 @@ struct GameView: View {
                     }
                     if viewModel.challenged && !viewModel.challenge_over {
                         Text("\(current_loser)")
+                            .font(.headline)
                             .onReceive(timer) { _ in
                                 current_loser = viewModel.players[viewModel.challenge_bid()].name + " lost"
                             }
                         
                     } else if viewModel.challenged && viewModel.challenge_over {
                         Text("\(current_loser)")
+                            .font(.headline)
                     }
                     
                     if viewModel.game_over {
                         Text("Game over \n \(viewModel.winner) won")
+                            .font(.headline)
                     }
                     Spacer()
-                    if !viewModel.still_bidding {
+                    if !viewModel.still_bidding && viewModel.challenge_over {
                         Button {
                             viewModel.roll()
                             current_loser = ""
                         } label: {
                             if viewModel.game_over {
                                 Text("New game")
+                                    .font(.headline)
                             }
                             else {
                                 Text("Roll")
+                                    .font(.headline)
                             }
                         }
                         .padding(.all, 12.0)
@@ -165,6 +174,7 @@ struct GameView: View {
                 }
                 if viewModel.current_player == 2  && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("Opponent 2")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .rotationEffect(Angle(degrees: -90))
                         .overlay(
@@ -177,6 +187,7 @@ struct GameView: View {
                 }
                 else {
                     Text("Opponent 2")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .rotationEffect(Angle(degrees: -90))
                 }
@@ -208,10 +219,12 @@ struct GameView: View {
                         viewModel.change_bid_num(action: "-")
                     } label: {
                         Image(systemName: "minus")
+                        
                     }
                     .padding(.horizontal, 5.0)
                     .disabled(viewModel.disable_minus)
                     Text("\(viewModel.possible_bid_num)")
+                        .font(.headline)
                         .foregroundColor(Color("base_colour"))
                     Button {
                         viewModel.change_bid_num(action: "+")
@@ -239,6 +252,7 @@ struct GameView: View {
 
                 } label: {
                     Text("Bid")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
@@ -251,6 +265,7 @@ struct GameView: View {
                 Spacer()
                 if viewModel.current_player == 0 && viewModel.still_bidding { //  && viewModel.players[1]
                     Text("You")
+                        .font(.headline)
                         .padding(.all, 12.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
@@ -258,6 +273,7 @@ struct GameView: View {
                 }
                 else {
                     Text("You")
+                        .font(.headline)
                         .padding(.all, 12.0)
                 }
                 Spacer()
@@ -267,6 +283,7 @@ struct GameView: View {
                    // viewModel.challenge_bid()
                 } label: {
                     Text("Challenge")
+                        .font(.headline)
                         .padding(.horizontal, 60)
                         .padding(.vertical, 12.0)
                         .overlay(

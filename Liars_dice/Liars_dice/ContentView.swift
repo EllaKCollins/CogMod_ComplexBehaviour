@@ -21,11 +21,11 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: LDViewModel
-
+// Lie-R's Dice
     var body: some View {
         NavigationView {
             VStack{
-                Text("Liars Dice")
+                Text("Liar's Dice")
                     .font(.system(size:50, design:.serif))
                     .fontWeight(.black)
                     .foregroundColor(Color("base_colour"))
