@@ -444,5 +444,8 @@
         state bid-done
 ==>
     -action>
+    -goal>
+    =goal>
+        state start
 )
 (goal-focus start-goal)
