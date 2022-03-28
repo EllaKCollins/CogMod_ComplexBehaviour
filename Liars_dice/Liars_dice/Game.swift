@@ -38,6 +38,7 @@ struct Game{
             temp.load_model()
             players.append(temp)
         }
+        current_player = starting_player
     }
     
     
@@ -53,7 +54,6 @@ struct Game{
                 break
             }
         }
-        print("is this working")
         return winner
     }
     
@@ -62,13 +62,12 @@ struct Game{
         for player in players {
             if player.still_in {
                 player.hand.roll_die()
-                player.send_hand() // only has a functionality if the player is an opponent
+                player.send_hand(total_die: self.total_die) // only has a functionality if the player is an opponent
             }
         }
     }
     
     mutating func roll(){
-        print("whatsup mate")
         if game_over {
             for player in players {
                 player.hand.num_die = hand_size
@@ -76,13 +75,13 @@ struct Game{
             }
             game_over = false
         }
-        current_player = starting_player
         still_bidding = true
         self.start_round()
         self.bids.removeAll()
         possible_bid_num = 1
         current_bid_dice = "one"
         check_valid_bid()
+        print(current_player)
     }
     
     mutating func change_current_bid_dice(){
@@ -212,7 +211,7 @@ struct Game{
     
     mutating func model_run(){
         // send last bid to model
-        let test = true // TODO: remove when actr works :)
+        let test = false // TODO: remove when actr works :)
         if test {
             let poss = ["one", "two", "three", "four", "five", "six"]
             
@@ -222,11 +221,12 @@ struct Game{
             check_valid_bid()
         }
         else {
-            let last_bid = bids.last!
-            players[current_player].send_info(last_bid: last_bid)
-            
+            if !bids.isEmpty{
+                let last_bid = bids.last!
+                players[current_player].send_info(last_bid: last_bid, total_die: total_die)
+            }
             let (face, num) = players[current_player].run_opponent()
-            print(face, num)
+            
             if face == "challenge" {
                 //self.challenge_bid()
                 change_challenge()
@@ -243,11 +243,13 @@ struct Game{
     }
     
     mutating func change_challenge() {
+        still_bidding = false
         challenged = true
         challenge_over = false
     }
     
     mutating func challenge_bid() -> Int {
+        
         let challenged_index = retrieve_previous_player(current: current_player)
         let challenger = players[current_player]
         let challenged_player = players[challenged_index]

@@ -278,7 +278,6 @@ struct GameView: View {
                 }
                 Spacer()
                 Button {
-                    viewModel.stop_bidding()
                     viewModel.change_challenge()
                    // viewModel.challenge_bid()
                 } label: {
