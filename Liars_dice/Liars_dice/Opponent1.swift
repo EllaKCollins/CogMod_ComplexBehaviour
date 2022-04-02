@@ -18,8 +18,11 @@ class Opponent1: Player {
     
     override func run_opponent() -> (String, String){
         print("model is trying to run ...")
+        print(model.buffers)
         model.run()
+        print("model has run ...")
         print(model.trace)
+        print(model.buffers)
         let decision = model.lastAction(slot: "challenge")!
         if (String(decision) != "challenge") {
             let face = model.lastAction(slot: "bidface")!
@@ -32,11 +35,11 @@ class Opponent1: Player {
       
     }
     
-    override func send_info(last_bid: Bid, total_die: Int){
+    override func send_info(last_bid: Bid, total_die: Int, first_bid: Bool){
         send_hand(total_die: total_die)
+        model.modifyLastAction(slot: "first", value: String(first_bid))
         model.modifyLastAction(slot: "bidface", value: last_bid.face)
         model.modifyLastAction(slot: "bidnumber", value: String(last_bid.num))
-        print("this was sent now")
     }
 
     override func send_hand(total_die: Int){
@@ -45,7 +48,7 @@ class Opponent1: Player {
             let count = self.hand.faces.filter({$0 == x}).count
             model.modifyLastAction(slot: "hand" + x, value: String(count))
         }
-        model.modifyLastAction(slot: "totaldie", value: String())
+        model.modifyLastAction(slot: "totaldie", value: String(total_die))
         print("we've sent this")
     }
     

@@ -38,7 +38,6 @@ struct Game{
             temp.load_model()
             players.append(temp)
         }
-        current_player = starting_player
     }
     
     
@@ -54,10 +53,14 @@ struct Game{
                 break
             }
         }
+        self.total_die = self.num_players * self.hand_size
         return winner
     }
     
     mutating func start_round(){
+        current_player = starting_player
+        print("current player2: ", current_player)
+        print("starting player2: ", starting_player)
         challenged = false
         for player in players {
             if player.still_in {
@@ -81,6 +84,8 @@ struct Game{
         possible_bid_num = 1
         current_bid_dice = "one"
         check_valid_bid()
+        check_button_disable()
+        print("roll: ", still_bidding, challenged)
         print(current_player)
     }
     
@@ -213,26 +218,63 @@ struct Game{
         // send last bid to model
         let test = false // TODO: remove when actr works :)
         if test {
+            print("Im trying")
+            let challenge = Int.random(in: 0..<4)
+            if challenge == 0 && !bids.isEmpty{
+                change_challenge()
+                check_button_disable()
+                check_valid_bid()
+            }
+            else {
             let poss = ["one", "two", "three", "four", "five", "six"]
-            
-            bids.append(Bid(face: poss[Int.random(in: 0..<6)], num: Int.random(in: 1..<(total_die/2))))
-            current_player = retrieve_next_player(current: current_player)
-            check_button_disable()
-            check_valid_bid()
+            var temp_bid = Bid(face: poss[Int.random(in: 0..<6)], num: Int.random(in: 1..<(total_die/2)))
+                if !bids.isEmpty{
+                    let last_bid = bids.last!
+                    var count = 0
+                    while (temp_bid.num <= last_bid.num || (face_dict[temp_bid.face]! <= face_dict[last_bid.face]! && temp_bid.num == last_bid.num)) {
+                        temp_bid = Bid(face: poss[Int.random(in: 0..<6)], num: Int.random(in: 1..<(total_die/2)))
+                        count += 1
+                        if count > 20 {
+                            change_challenge()
+                            check_button_disable()
+                            check_valid_bid()
+                            break
+                        }
+                    }
+                    print("I did it!")
+                    if count < 20 {
+                        bids.append(temp_bid)
+                        current_player = retrieve_next_player(current: current_player)
+                        check_button_disable()
+                        check_valid_bid()
+                    }
+                        
+                }
+                else{
+                    bids.append(temp_bid)
+                    current_player = retrieve_next_player(current: current_player)
+                    check_button_disable()
+                    check_valid_bid()
+                }
+            }
         }
+        // not testing
         else {
             if !bids.isEmpty{
                 let last_bid = bids.last!
-                players[current_player].send_info(last_bid: last_bid, total_die: total_die)
+                players[current_player].send_info(last_bid: last_bid, total_die: total_die, first_bid: false)
+            }
+            else {
+                print("I have sent it nothing ")
+                players[current_player].send_info(last_bid: Bid(face: "zero", num: 0), total_die: total_die, first_bid: true)
             }
             let (face, num) = players[current_player].run_opponent()
             
             if face == "challenge" {
-                //self.challenge_bid()
                 change_challenge()
             }
             else {
-                let model_bid = Bid(face: face, num: Int(num)!)
+                let model_bid = Bid(face: face, num: Int(Double(num)!))
                 bids.append(model_bid)
                 
                 current_player = retrieve_next_player(current: current_player)
@@ -265,10 +307,13 @@ struct Game{
             }
         }else{
             challenger.hand.remove_dice()
+            starting_player = current_player
             if challenger.hand.num_die == 0 {
                 challenger.still_in = false
                 starting_player = retrieve_next_player(current: current_player)
             }
+            print("current player: ", current_player)
+            print("starting player: ", starting_player)
         }
         total_die -= 1
         var count = 0

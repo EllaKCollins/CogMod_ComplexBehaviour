@@ -14,8 +14,8 @@
             filePath = "Liars_dice/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "model_run()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Liars_dice/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "model_run()"
             landmarkType = "7">
          </BreakpointContent>

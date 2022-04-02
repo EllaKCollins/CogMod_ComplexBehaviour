@@ -23,7 +23,7 @@ class Player {
         return ("sup", "bro")
     }
     
-    func send_info(last_bid: Bid, total_die: Int){
+    func send_info(last_bid: Bid, total_die: Int, first_bid: Bool){
         
     }
     

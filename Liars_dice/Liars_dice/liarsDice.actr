@@ -55,8 +55,6 @@
         state got-hand
     +action>
         isa move
-        bidface zero
-        bidnumber 0
         totaldie 0
         handone 0
         handtwo 0
@@ -513,14 +511,19 @@
     =retrieval>
         bidface six
         
-) 
+)
+
 (p bid-done
     =goal>
         isa goal
         state bid-done
 ==>
+    -goal>
+    =goal>
+        isa goal
+        state start
     -action>
     -retrieval>
-    -goal>
+    
 )
 (goal-focus start-goal)

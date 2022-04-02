@@ -64,19 +64,21 @@ struct GameView: View {
                                 .resizable()
                                 .frame(width: dice_size * scale, height: dice_size * scale)
                         }
-                        else if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[1].hand.faces[dice]{
-                            Image(viewModel.players[1].hand.faces[dice])
-                                .resizable()
-                                .frame(width: dice_size * scale, height: dice_size * scale)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(.red, lineWidth: 3)
-                                    )
-                        }
-                        else {
-                            Image(viewModel.players[1].hand.faces[dice])
-                                .resizable()
-                                .frame(width: dice_size * scale, height: dice_size * scale)
+                        else if !viewModel.still_bidding && viewModel.challenged && !viewModel.bids.isEmpty{
+                            if viewModel.bids.last!.face == viewModel.players[1].hand.faces[dice] {
+                                Image(viewModel.players[1].hand.faces[dice])
+                                    .resizable()
+                                    .frame(width: dice_size * scale, height: dice_size * scale)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .stroke(.red, lineWidth: 3)
+                                        )
+                            }
+                            else {
+                                Image(viewModel.players[1].hand.faces[dice])
+                                    .resizable()
+                                    .frame(width: dice_size * scale, height: dice_size * scale)
+                            }
                         }
                     }
                 }
@@ -156,20 +158,23 @@ struct GameView: View {
                                 .resizable()
                                 .frame(width: dice_size * scale, height: dice_size * scale)
                         }
-                        else if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[2].hand.faces[dice]{
-                            Image(viewModel.players[2].hand.faces[dice])
-                                .resizable()
-                                .frame(width: dice_size * scale, height: dice_size * scale)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(.red, lineWidth: 3)
-                                    )
+                        else if !viewModel.still_bidding && viewModel.challenged && !viewModel.bids.isEmpty{
+                            if viewModel.bids.last!.face == viewModel.players[2].hand.faces[dice] {
+                                Image(viewModel.players[2].hand.faces[dice])
+                                    .resizable()
+                                    .frame(width: dice_size * scale, height: dice_size * scale)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .stroke(.red, lineWidth: 3)
+                                        )
+                            }
+                            else {
+                                Image(viewModel.players[2].hand.faces[dice])
+                                    .resizable()
+                                    .frame(width: dice_size * scale, height: dice_size * scale)
+                            }
                         }
-                        else {
-                            Image(viewModel.players[2].hand.faces[dice])
-                                .resizable()
-                                .frame(width: dice_size * scale, height: dice_size * scale)
-                        }
+                        
                     }
                 }
                 if viewModel.current_player == 2  && viewModel.still_bidding { //  && viewModel.players[1]
@@ -196,14 +201,22 @@ struct GameView: View {
             // Player hand
             HStack {
                 ForEach(viewModel.players[0].hand.faces.indices, id: \.self){ dice in
-                    if viewModel.challenged && viewModel.bids.last!.face == viewModel.players[0].hand.faces[dice]{
-                        Image(viewModel.players[0].hand.faces[dice])
-                            .resizable()
-                            .frame(width: dice_size * scale, height: dice_size * scale)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.red, lineWidth: 3)
-                                )
+                    
+                    if viewModel.challenged && !viewModel.bids.isEmpty{
+                        if viewModel.bids.last!.face == viewModel.players[0].hand.faces[dice] {
+                            Image(viewModel.players[0].hand.faces[dice])
+                                .resizable()
+                                .frame(width: dice_size * scale, height: dice_size * scale)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.red, lineWidth: 3)
+                                    )
+                        }
+                        else {
+                            Image(viewModel.players[0].hand.faces[dice])
+                                .resizable()
+                                .frame(width: dice_size * scale, height: dice_size * scale)
+                        }
                     }
                     else {
                         Image(viewModel.players[0].hand.faces[dice])
@@ -279,7 +292,6 @@ struct GameView: View {
                 Spacer()
                 Button {
                     viewModel.change_challenge()
-                   // viewModel.challenge_bid()
                 } label: {
                     Text("Challenge")
                         .font(.headline)
