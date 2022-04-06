@@ -5,8 +5,8 @@
 
 (add-dm
     ;;bidnumbers (incomplete)
-    (bidnumber0 isa bidnumber number 0 nextnumber 1 previous nil)
-    (bidnumber1 isa bidnumber number 1 nextnumber "2" previous nil)
+    (bidnumber0 isa bidnumber number zero nextnumber 1 previous nil)
+    (bidnumber1 isa bidnumber number 1 nextnumber 2 previous nil)
     (bidnumber2 isa bidnumber number 2 nextnumber 3 previous 1)
     (bidnumber3 isa bidnumber number 3 nextnumber 4 previous 2)
     (bidnumber4 isa bidnumber number 4 nextnumber 5 previous 3)
@@ -33,56 +33,84 @@
     ;(chunk-type isa current-state handone handtwo handthree handfour handfive handsix totaldie bidface bidnumber reasonable)
     
     ;;dummy data that was used for testing
-    ;;(dummy-state1 isa current-state handone 5 handtwo 1 handthree 1 handfour 0 handfive 0 handsix 0 totaldie 15 bidface two bidnumber 1 reasonable 1)
+    ;;(dummy-state1 isa current-state handone 5 handtwo 1 handthree 1 handfour 0 handfive 0 handsix 0 totaldie 15 bidface two bidnumber 1 reasonable 0)
     (dummy-state1 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 15)
     (dummy-state2 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 15)
     (dummy-state3 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 15)
     (dummy-state4 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 15)
-    (dummy-state5 isa current-state bidface zero bidnumber 0 reasonable 1 totaldie 14)
-    ;;(dummy-state2 isa current-state handone 1 handtwo 1 handthree 1 handfour 1 handfive 1 handsix 0 totaldie 10 bidface two bidnumber 5 reasonable 0)
     (bufferbuffer isa bufferfill crash dont)
     (start-goal isa goal state start)
 )
 
-(set-all-baselevels -100 10)
+;;(set-all-baselevels -100 10)
 
 (p start-hand
     =goal>
         isa goal
         state start
 ==>
-    =goal>
-        state got-hand
     +action>
         isa move
-        totaldie 0
-        handone 0
-        handtwo 0
-        handthree 0
-        handfour 0
-        handfive 0
-        handsix 0
+    =goal>
+        state got-hand
 )
-
+(p start-first-hard-code
+    =action>
+        first true
+==>
+    +action>
+    bidface one
+    bidnumber 1
+    challenge no
+   =goal>
+    state bid-done
+)
 (p start-first
     =goal>
         state got-hand
-        ;;bidface nil
-        bidnumber 0
-        > totaldie 1
+    =action>
+        isa move
+        first true
+        bidface =currentbidface
+        bidnumber =currentbidnumber
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
 ==>
     =goal>
-        bidnumber 0
-        bidface zero
         state make-bid
+        reasonable 1
+        bidface one
+        bidnumber 1
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
+    =retrieval>
+        bidface one
+        bidnumber 1
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
 )
-
 (p start
     =goal>
         isa goal
         state got-hand
     =action>
         isa move
+        first false
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
@@ -105,7 +133,6 @@
         handfive =handfive
         handsix =handsix
     =retrieval>
-        isa current-state
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
@@ -136,8 +163,48 @@
         totaldie =totaldie
         reasonable 1
     =goal>
-        state make-bid
+        state clear-memory
         reasonable 1
+)
+
+(p clear-memory
+    =goal>
+        state clear-memory
+        bidface =currentbidface
+        bidnumber =currentbidnumber
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
+    =retrieval>
+        reasonable 1
+==>
+    =goal>
+        state make-bid
+    =retrieval>
+        bidface =currentbidface
+        bidnumber =currentbidnumber
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
+    =action>
+        bidface =currentbidface
+        bidnumber =currentbidnumber
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
+        
 )
 
 ;if there is no memory of current-state
@@ -148,12 +215,15 @@
         state error ;;reasonable was not true
 ==>
     =goal>
-        state challenge
+        state challenged
+    +retrieval>
+        isa bufferfill
+    -action>
 )
+
 (p is-challenged
     =goal>
-        state challenge
-        >= bidnumber 1
+        state challenged
 ==>
     +action>
         challenge challenge
@@ -161,6 +231,19 @@
         bidnumber 1
     =goal>
         state done
+)
+
+(p first-challenge-failure
+    =goal>
+        state challenged
+    =action>
+        first true
+==>
+    =action>
+        bidface one
+        bidnumber 1
+    =goal>
+        state make-bid
 )
 ;; INCREASE NUMBER OF BID
 ;; if face in hand
@@ -183,17 +266,20 @@
         isa goal
         state increase-number
         bidface =bidface
+        inhand 1
     =retrieval>
         isa bidnumber
         number =num1
 ==>
     =goal>
-        state bid-done
         bidnumber =num1
+        bidface =bidface
+        state bid-done
     +action>
         challenge no
         bidnumber =num1
         bidface =bidface
+    
         
 )
 ;; if bidface in hand, retrieve next face
@@ -300,7 +386,6 @@
         handfour =four
         handfive =five
         handsix =six
-        reasonable 1
     =retrieval>
         isa bidface
         previous =currentbidface
@@ -321,6 +406,16 @@
         handfive =five
         handsix =six
         reasonable 1
+    =action>
+        bidface =face1
+        bidnumber =currentbidnumber
+        totaldie =die
+        handone =one
+        handtwo =two
+        handthree =three
+        handfour =four
+        handfive =five
+        handsix =six
     -imaginal>
 )
 
@@ -339,7 +434,7 @@
     =goal>
         state retrieve-number
         inhand 1
-) 
+)
 (p bidface-two-in-hand
     =goal>
         isa goal
@@ -353,7 +448,7 @@
     =goal>
         inhand 1
         state retrieve-number
-) 
+)
 
 (p bidface-three-in-hand
     =goal>
@@ -363,12 +458,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        >= handthree 1 
+        >= handthree 1
 ==>
     =goal>
         inhand 1
         state retrieve-number
-) 
+)
 (p bidface-four-in-hand
     =goal>
         isa goal
@@ -377,12 +472,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        >= handfour 1 
+        >= handfour 1
 ==>
     =goal>
         inhand 1
         state retrieve-number
-) 
+)
 (p bidface-five-in-hand
     =goal>
         isa goal
@@ -391,12 +486,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        >= handfive 1 
+        >= handfive 1
 ==>
     =goal>
         inhand 1
         state retrieve-number
-) 
+)
 (p bidface-six-in-hand
     =goal>
         isa goal
@@ -405,7 +500,7 @@
         reasonable 1
     =retrieval>
         isa current-state
-        >= handsix 1 
+        >= handsix 1
 ==>
     =goal>
         inhand 1
@@ -419,9 +514,6 @@
         state make-bid
         bidface zero
         reasonable 1
-        < handone 1
-    =retrieval>
-        isa current-state
 ==>
     =goal>
         state retrieve-face
@@ -439,7 +531,7 @@
 ==>
     =goal>
         state retrieve-face
-) 
+)
 (p bidface-two-not-in-hand
     =goal>
         isa goal
@@ -453,7 +545,7 @@
 ==>
     =goal>
         state retrieve-face
-) 
+)
 (p bidface-three-not-in-hand
     =goal>
         isa goal
@@ -462,12 +554,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        < handthree 1 
+        < handthree 1
 ==>
     =goal>
         state retrieve-face
         
-) 
+)
 (p bidface-four-not-in-hand
     =goal>
         isa goal
@@ -476,12 +568,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        < handfour 1 
+        < handfour 1
 ==>
     =goal>
         state retrieve-face
         
-) 
+)
 (p bidface-five-not-in-hand
     =goal>
         isa goal
@@ -490,12 +582,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        < handfive 1 
+        < handfive 1
 ==>
     =goal>
         state retrieve-face
         
-) 
+)
 (p bidface-six-not-in-hand
     =goal>
         isa goal
@@ -504,26 +596,12 @@
         reasonable 1
     =retrieval>
         isa current-state
-        < handsix 1 
+        < handsix 1
 ==>
     =goal>
         state retrieve-next-face-six
     =retrieval>
         bidface six
         
-)
-
-(p bid-done
-    =goal>
-        isa goal
-        state bid-done
-==>
-    -goal>
-    =goal>
-        isa goal
-        state start
-    -action>
-    -retrieval>
-    
 )
 (goal-focus start-goal)
