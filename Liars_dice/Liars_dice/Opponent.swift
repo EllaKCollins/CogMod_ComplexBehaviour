@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Opponent1: Player {
+class Opponent: Player {
     var model = Model()
     var step_num = 0
     
@@ -50,6 +50,20 @@ class Opponent1: Player {
         }
         model.modifyLastAction(slot: "totaldie", value: String(total_die))
         print("we've sent this")
+    }
+    
+    override func send_reasonable_bids(reasonable_bids: [Bid], total_die: Int){
+        for bid in reasonable_bids {
+            let name = "bid" + bid.face + String(bid.num) + String(total_die)
+            print("bid passed is: ",name)
+            let chunk = Chunk(s: name, m: model)
+            chunk.setSlot(slot: "isa", value: "current-state")
+            chunk.setSlot(slot: "bidface", value: bid.face)
+            chunk.setSlot(slot: "bidnumber", value: Double(bid.num))
+            chunk.setSlot(slot: "reasonable", value: Double(1))
+            chunk.setSlot(slot: "totaldie", value: Double(total_die))
+            model.dm.addToDM(chunk)
+        }
     }
     
 }

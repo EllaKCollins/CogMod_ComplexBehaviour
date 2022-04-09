@@ -27,12 +27,13 @@
 		0E1B325D27BEB8EF00D51A18 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324C27BEB8EF00D51A18 /* Support.swift */; };
 		0E1B325E27BEB8EF00D51A18 /* Declarative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324D27BEB8EF00D51A18 /* Declarative.swift */; };
 		0E1B325F27BEB8EF00D51A18 /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324E27BEB8EF00D51A18 /* Instantiation.swift */; };
-		0E1B326327BEC41A00D51A18 /* Opponent1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326227BEC41A00D51A18 /* Opponent1.swift */; };
+		0E1B326327BEC41A00D51A18 /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326227BEC41A00D51A18 /* Opponent.swift */; };
 		0E1B326527BECBA700D51A18 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326427BECBA700D51A18 /* GameView.swift */; };
 		0E1B326727BFACA200D51A18 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326627BFACA200D51A18 /* Game.swift */; };
 		0E1B326927BFAD9300D51A18 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326827BFAD9300D51A18 /* Hand.swift */; };
 		0E1B326B27BFB2CF00D51A18 /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326A27BFB2CF00D51A18 /* Bid.swift */; };
 		0E1B326E27BFB8DA00D51A18 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326D27BFB8DA00D51A18 /* Player.swift */; };
+		0E53F19E27F894B300147121 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53F19D27F894B300147121 /* RulesView.swift */; };
 		0E866E9727C79E2200A5FA9E /* LDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E866E9627C79E2200A5FA9E /* LDViewModel.swift */; };
 		0EB523FD27C62FB100A94F4C /* liarsDice.actr in Resources */ = {isa = PBXBuildFile; fileRef = 0EB523FC27C62FB100A94F4C /* liarsDice.actr */; };
 		0EC9CF8F27EC8DAF00E93B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B321127BEB66A00D51A18 /* Assets.xcassets */; };
@@ -61,13 +62,14 @@
 		0E1B324C27BEB8EF00D51A18 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		0E1B324D27BEB8EF00D51A18 /* Declarative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Declarative.swift; sourceTree = "<group>"; };
 		0E1B324E27BEB8EF00D51A18 /* Instantiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instantiation.swift; sourceTree = "<group>"; };
-		0E1B326227BEC41A00D51A18 /* Opponent1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent1.swift; sourceTree = "<group>"; };
+		0E1B326227BEC41A00D51A18 /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		0E1B326427BECBA700D51A18 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		0E1B326627BFACA200D51A18 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0E1B326827BFAD9300D51A18 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		0E1B326A27BFB2CF00D51A18 /* Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
 		0E1B326D27BFB8DA00D51A18 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0E38268427F23D4300B186DE /* liars_2.actr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = liars_2.actr.h; sourceTree = "<group>"; };
+		0E53F19D27F894B300147121 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		0E866E9627C79E2200A5FA9E /* LDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDViewModel.swift; sourceTree = "<group>"; };
 		0EB523FC27C62FB100A94F4C /* liarsDice.actr */ = {isa = PBXFileReference; lastKnownFileType = text; path = liarsDice.actr; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,9 +111,10 @@
 				0E1B320F27BEB66900D51A18 /* ContentView.swift */,
 				0E38268427F23D4300B186DE /* liars_2.actr.h */,
 				0EB523FC27C62FB100A94F4C /* liarsDice.actr */,
-				0E1B326227BEC41A00D51A18 /* Opponent1.swift */,
+				0E1B326227BEC41A00D51A18 /* Opponent.swift */,
 				0E1B326D27BFB8DA00D51A18 /* Player.swift */,
 				0E1B326427BECBA700D51A18 /* GameView.swift */,
+				0E53F19D27F894B300147121 /* RulesView.swift */,
 				0E866E9627C79E2200A5FA9E /* LDViewModel.swift */,
 				0E1B326627BFACA200D51A18 /* Game.swift */,
 				0E1B326827BFAD9300D51A18 /* Hand.swift */,
@@ -255,13 +258,14 @@
 				0E1B325927BEB8EF00D51A18 /* FocusRing.swift in Sources */,
 				0E1B326527BECBA700D51A18 /* GameView.swift in Sources */,
 				0E1B325F27BEB8EF00D51A18 /* Instantiation.swift in Sources */,
-				0E1B326327BEC41A00D51A18 /* Opponent1.swift in Sources */,
+				0E1B326327BEC41A00D51A18 /* Opponent.swift in Sources */,
 				0E1B325A27BEB8EF00D51A18 /* Temporal.swift in Sources */,
 				0E1B326727BFACA200D51A18 /* Game.swift in Sources */,
 				0E1B326E27BFB8DA00D51A18 /* Player.swift in Sources */,
 				0E1B326927BFAD9300D51A18 /* Hand.swift in Sources */,
 				0E1B326B27BFB2CF00D51A18 /* Bid.swift in Sources */,
 				0E1B320E27BEB66900D51A18 /* Liars_diceApp.swift in Sources */,
+				0E53F19E27F894B300147121 /* RulesView.swift in Sources */,
 				0E1B325427BEB8EF00D51A18 /* Model.swift in Sources */,
 				0E1B325D27BEB8EF00D51A18 /* Support.swift in Sources */,
 				0E1B325B27BEB8EF00D51A18 /* BufferAction.swift in Sources */,

@@ -34,7 +34,7 @@ struct Game{
         players.append(Player(name: "You", num_die: self.hand_size, still_in: true))
         self.total_die = self.num_players * self.hand_size
         for i in 1...(num_players-1) {
-            let temp = Opponent1(name: "Opponent " + String(i) , num_die: self.hand_size, still_in: true)
+            let temp = Opponent(name: "Opponent " + String(i) , num_die: self.hand_size, still_in: true)
             temp.load_model()
             players.append(temp)
         }
@@ -272,6 +272,8 @@ struct Game{
             
             if face == "challenge" {
                 change_challenge()
+                check_button_disable()
+                check_valid_bid()
             }
             else {
                 let model_bid = Bid(face: face, num: Int(Double(num)!))
@@ -290,6 +292,24 @@ struct Game{
         challenge_over = false
     }
     
+    func determine_reasonable() -> [Bid]{
+        let faces = ["one", "two", "three", "four", "five", "six"]
+        var arr = [0, 0, 0, 0, 0, 0]
+        
+        for player in players {
+            for (i, face) in faces.enumerated() {
+                arr[i] += player.hand.count_face(face: face)
+            }
+        }
+        var reasonable_bids: [Bid] = []
+        for bid in bids {
+            if arr[face_dict[bid.face]!] >= bid.num {
+                reasonable_bids.append(bid)
+            }
+        }
+        return reasonable_bids
+    }
+    
     mutating func challenge_bid() -> Int {
         
         let challenged_index = retrieve_previous_player(current: current_player)
@@ -297,7 +317,12 @@ struct Game{
         let challenged_player = players[challenged_index]
         
         let challenge_result = determine_result()
-
+        
+        let reasonable_bids = determine_reasonable()
+        print("giving the models more info...")
+        players[1].send_reasonable_bids(reasonable_bids: reasonable_bids, total_die: total_die)
+        players[2].send_reasonable_bids(reasonable_bids: reasonable_bids, total_die: total_die)
+        
         if challenge_result{
             challenged_player.hand.remove_dice()
             starting_player = challenged_index
@@ -327,6 +352,7 @@ struct Game{
             winner = end_game()
         }
         challenge_over = true
+        
         return challenge_result ? challenged_index : current_player
     }
     

@@ -32,21 +32,37 @@ struct ContentView: View {
                 Spacer()
                 Image("liarsdice_image")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    //.aspectRatio(contentMode: .fit)
                 Spacer()
-                NavigationLink( destination: GameView(viewModel: viewModel) ) {
-                        Text("Start game")
-                        .font(.system(.headline, design: .serif))
-                            .fontWeight(.black)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(lineWidth: 4))
+                HStack{
+                    NavigationLink(destination: RulesView() ) {
+                            Image(systemName: "questionmark.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                                
+                    }
+                        .foregroundColor(Color("base_colour"))  // 3, 4, 94
+                    Spacer()
+                    NavigationLink( destination: GameView(viewModel: viewModel) ) {
+                            Text("Start game")
+                            .font(.system(.headline, design: .serif))
+                                .fontWeight(.black)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(lineWidth: 4))
+                    }
+                        
+                        .foregroundColor(Color("base_colour"))  // 3, 4, 94
+                    Spacer()
+                        .navigationBarHidden(true)
+                        .navigationBarTitle("", displayMode: .inline)
+                    // for the rules
                 }
-                    .foregroundColor(Color("base_colour"))  // 3, 4, 94
-                Spacer()
-                    .navigationBarHidden(true)
-                    .navigationBarTitle("", displayMode: .inline)
+                
             }
             .background(
                 Image("back")
