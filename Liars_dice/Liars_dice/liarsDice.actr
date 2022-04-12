@@ -290,7 +290,7 @@
         handsix =handsix
 ==>
     =goal>
-        state start-start
+        state retrieving-state
         first false
         bidface =currentbidface
         bidnumber =currentbidnumber
@@ -301,21 +301,6 @@
         handfour =handfour
         handfive =handfive
         handsix =handsix
-)
-
-(p start-start
-    =goal>
-        state start-start
-        bidface =currentbidface
-        bidnumber =currentbidnumber
-        totaldie =totaldie
-        handone =handone
-        handtwo =handtwo
-        handthree =handthree
-        handfour =handfour
-        handfive =handfive
-        handsix =handsix
-==>
     =retrieval>
         bidface =currentbidface
         bidnumber =currentbidnumber
@@ -326,8 +311,6 @@
         handfour =handfour
         handfive =handfive
         handsix =handsix
-    =goal>
-        state retrieving-state
 )
 
 ;;if current-state in memory with reasonable=1
@@ -399,18 +382,7 @@
         isa bufferfill
 )
 
-;(p is-challenged
-;    =goal>
-;        state challenged
-;==>
-;    +action>
-;        challenge challenge
-;        bidface zero
-;        bidnumber 0
-;    =goal>
-;        state stop
-;)
-(p is-challenged2
+(p is-challenged
     =goal>
         state challenged
     =retrieval>
@@ -429,7 +401,7 @@
         first true
 ==>
     =action>
-        challenge no
+        challenge false
         bidface one
         bidnumber 1
     =goal>
@@ -472,7 +444,7 @@
     
         
 )
-;; if bidface in hand, retrieve next face
+;; if bidface not in hand, retrieve next face
 ;; keep current-state stored in imaginal buffer
 (p retrieve-next-face
     =goal>
@@ -679,16 +651,6 @@
 )
 ;; WHEN BIDFACE IS NOT IN HAND
 ;; the corresponding production will fire
-(p bidface-zero-not-in-hand
-    =goal>
-        isa goal
-        state make-bid
-        bidface zero
-        reasonable 1
-==>
-    =goal>
-        state retrieve-face
-)
 (p bidface-one-not-in-hand
     =goal>
         isa goal
