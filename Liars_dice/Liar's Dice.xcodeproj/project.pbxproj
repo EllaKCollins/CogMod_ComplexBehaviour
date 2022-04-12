@@ -7,26 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E05B6172805AD11001087C1 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6082805AD11001087C1 /* SlotAction.swift */; };
+		0E05B6182805AD11001087C1 /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6092805AD11001087C1 /* BufferCondition.swift */; };
+		0E05B6192805AD11001087C1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60A2805AD11001087C1 /* Model.swift */; };
+		0E05B61A2805AD11001087C1 /* Procedural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60B2805AD11001087C1 /* Procedural.swift */; };
+		0E05B61B2805AD11001087C1 /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60C2805AD11001087C1 /* Instantiation.swift */; };
+		0E05B61C2805AD11001087C1 /* Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60D2805AD11001087C1 /* Temporal.swift */; };
+		0E05B61D2805AD11001087C1 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60E2805AD11001087C1 /* Vision.swift */; };
+		0E05B61E2805AD11001087C1 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B60F2805AD11001087C1 /* Tokenizer.swift */; };
+		0E05B61F2805AD11001087C1 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6102805AD11001087C1 /* SlotCondition.swift */; };
+		0E05B6202805AD11001087C1 /* BufferAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6112805AD11001087C1 /* BufferAction.swift */; };
+		0E05B6212805AD11001087C1 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6122805AD11001087C1 /* Support.swift */; };
+		0E05B6222805AD11001087C1 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6132805AD11001087C1 /* Parser.swift */; };
+		0E05B6232805AD11001087C1 /* Declarative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6142805AD11001087C1 /* Declarative.swift */; };
+		0E05B6242805AD11001087C1 /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6152805AD11001087C1 /* Chunk.swift */; };
+		0E05B6252805AD11001087C1 /* Production.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05B6162805AD11001087C1 /* Production.swift */; };
 		0E1B320E27BEB66900D51A18 /* Liars_diceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B320D27BEB66900D51A18 /* Liars_diceApp.swift */; };
 		0E1B321027BEB66900D51A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B320F27BEB66900D51A18 /* ContentView.swift */; };
 		0E1B321527BEB66A00D51A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B321427BEB66A00D51A18 /* Preview Assets.xcassets */; };
-		0E1B324F27BEB8EF00D51A18 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B323E27BEB8EF00D51A18 /* SlotAction.swift */; };
-		0E1B325027BEB8EF00D51A18 /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B323F27BEB8EF00D51A18 /* BufferCondition.swift */; };
-		0E1B325127BEB8EF00D51A18 /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324027BEB8EF00D51A18 /* Chunk.swift */; };
-		0E1B325227BEB8EF00D51A18 /* Production.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324127BEB8EF00D51A18 /* Production.swift */; };
-		0E1B325327BEB8EF00D51A18 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324227BEB8EF00D51A18 /* SlotCondition.swift */; };
-		0E1B325427BEB8EF00D51A18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324327BEB8EF00D51A18 /* Model.swift */; };
-		0E1B325527BEB8EF00D51A18 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324427BEB8EF00D51A18 /* Vision.swift */; };
-		0E1B325627BEB8EF00D51A18 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324527BEB8EF00D51A18 /* Parser.swift */; };
-		0E1B325727BEB8EF00D51A18 /* ACTRWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324627BEB8EF00D51A18 /* ACTRWindowView.swift */; };
-		0E1B325827BEB8EF00D51A18 /* Procedural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324727BEB8EF00D51A18 /* Procedural.swift */; };
-		0E1B325927BEB8EF00D51A18 /* FocusRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324827BEB8EF00D51A18 /* FocusRing.swift */; };
-		0E1B325A27BEB8EF00D51A18 /* Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324927BEB8EF00D51A18 /* Temporal.swift */; };
-		0E1B325B27BEB8EF00D51A18 /* BufferAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324A27BEB8EF00D51A18 /* BufferAction.swift */; };
-		0E1B325C27BEB8EF00D51A18 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324B27BEB8EF00D51A18 /* Tokenizer.swift */; };
-		0E1B325D27BEB8EF00D51A18 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324C27BEB8EF00D51A18 /* Support.swift */; };
-		0E1B325E27BEB8EF00D51A18 /* Declarative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324D27BEB8EF00D51A18 /* Declarative.swift */; };
-		0E1B325F27BEB8EF00D51A18 /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B324E27BEB8EF00D51A18 /* Instantiation.swift */; };
 		0E1B326327BEC41A00D51A18 /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326227BEC41A00D51A18 /* Opponent.swift */; };
 		0E1B326527BECBA700D51A18 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326427BECBA700D51A18 /* GameView.swift */; };
 		0E1B326727BFACA200D51A18 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B326627BFACA200D51A18 /* Game.swift */; };
@@ -40,28 +38,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E05B6082805AD11001087C1 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
+		0E05B6092805AD11001087C1 /* BufferCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferCondition.swift; sourceTree = "<group>"; };
+		0E05B60A2805AD11001087C1 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0E05B60B2805AD11001087C1 /* Procedural.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Procedural.swift; sourceTree = "<group>"; };
+		0E05B60C2805AD11001087C1 /* Instantiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instantiation.swift; sourceTree = "<group>"; };
+		0E05B60D2805AD11001087C1 /* Temporal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temporal.swift; sourceTree = "<group>"; };
+		0E05B60E2805AD11001087C1 /* Vision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
+		0E05B60F2805AD11001087C1 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		0E05B6102805AD11001087C1 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
+		0E05B6112805AD11001087C1 /* BufferAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferAction.swift; sourceTree = "<group>"; };
+		0E05B6122805AD11001087C1 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		0E05B6132805AD11001087C1 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		0E05B6142805AD11001087C1 /* Declarative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Declarative.swift; sourceTree = "<group>"; };
+		0E05B6152805AD11001087C1 /* Chunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
+		0E05B6162805AD11001087C1 /* Production.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Production.swift; sourceTree = "<group>"; };
 		0E1B320A27BEB66900D51A18 /* Liar's Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liar's Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E1B320D27BEB66900D51A18 /* Liars_diceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liars_diceApp.swift; sourceTree = "<group>"; };
 		0E1B320F27BEB66900D51A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E1B321127BEB66A00D51A18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E1B321427BEB66A00D51A18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0E1B323E27BEB8EF00D51A18 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
-		0E1B323F27BEB8EF00D51A18 /* BufferCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferCondition.swift; sourceTree = "<group>"; };
-		0E1B324027BEB8EF00D51A18 /* Chunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
-		0E1B324127BEB8EF00D51A18 /* Production.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Production.swift; sourceTree = "<group>"; };
-		0E1B324227BEB8EF00D51A18 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
-		0E1B324327BEB8EF00D51A18 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		0E1B324427BEB8EF00D51A18 /* Vision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
-		0E1B324527BEB8EF00D51A18 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		0E1B324627BEB8EF00D51A18 /* ACTRWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTRWindowView.swift; sourceTree = "<group>"; };
-		0E1B324727BEB8EF00D51A18 /* Procedural.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Procedural.swift; sourceTree = "<group>"; };
-		0E1B324827BEB8EF00D51A18 /* FocusRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusRing.swift; sourceTree = "<group>"; };
-		0E1B324927BEB8EF00D51A18 /* Temporal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temporal.swift; sourceTree = "<group>"; };
-		0E1B324A27BEB8EF00D51A18 /* BufferAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferAction.swift; sourceTree = "<group>"; };
-		0E1B324B27BEB8EF00D51A18 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
-		0E1B324C27BEB8EF00D51A18 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
-		0E1B324D27BEB8EF00D51A18 /* Declarative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Declarative.swift; sourceTree = "<group>"; };
-		0E1B324E27BEB8EF00D51A18 /* Instantiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instantiation.swift; sourceTree = "<group>"; };
 		0E1B326227BEC41A00D51A18 /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		0E1B326427BECBA700D51A18 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		0E1B326627BFACA200D51A18 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -85,6 +81,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E05B6072805AD11001087C1 /* Core ACT-R */ = {
+			isa = PBXGroup;
+			children = (
+				0E05B6082805AD11001087C1 /* SlotAction.swift */,
+				0E05B6092805AD11001087C1 /* BufferCondition.swift */,
+				0E05B60A2805AD11001087C1 /* Model.swift */,
+				0E05B60B2805AD11001087C1 /* Procedural.swift */,
+				0E05B60C2805AD11001087C1 /* Instantiation.swift */,
+				0E05B60D2805AD11001087C1 /* Temporal.swift */,
+				0E05B60E2805AD11001087C1 /* Vision.swift */,
+				0E05B60F2805AD11001087C1 /* Tokenizer.swift */,
+				0E05B6102805AD11001087C1 /* SlotCondition.swift */,
+				0E05B6112805AD11001087C1 /* BufferAction.swift */,
+				0E05B6122805AD11001087C1 /* Support.swift */,
+				0E05B6132805AD11001087C1 /* Parser.swift */,
+				0E05B6142805AD11001087C1 /* Declarative.swift */,
+				0E05B6152805AD11001087C1 /* Chunk.swift */,
+				0E05B6162805AD11001087C1 /* Production.swift */,
+			);
+			path = "Core ACT-R";
+			sourceTree = "<group>";
+		};
 		0E1B320127BEB66900D51A18 = {
 			isa = PBXGroup;
 			children = (
@@ -104,8 +122,7 @@
 		0E1B320C27BEB66900D51A18 /* Liars_dice */ = {
 			isa = PBXGroup;
 			children = (
-				0E1B326127BEC39700D51A18 /* Model */,
-				0E1B321B27BEB8A800D51A18 /* Core ACT-R */,
+				0E05B6072805AD11001087C1 /* Core ACT-R */,
 				0E1B326C27BFB8C500D51A18 /* Players */,
 				0E1B320D27BEB66900D51A18 /* Liars_diceApp.swift */,
 				0E1B320F27BEB66900D51A18 /* ContentView.swift */,
@@ -131,37 +148,6 @@
 				0E1B321427BEB66A00D51A18 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0E1B321B27BEB8A800D51A18 /* Core ACT-R */ = {
-			isa = PBXGroup;
-			children = (
-				0E1B324627BEB8EF00D51A18 /* ACTRWindowView.swift */,
-				0E1B324A27BEB8EF00D51A18 /* BufferAction.swift */,
-				0E1B323F27BEB8EF00D51A18 /* BufferCondition.swift */,
-				0E1B324027BEB8EF00D51A18 /* Chunk.swift */,
-				0E1B324D27BEB8EF00D51A18 /* Declarative.swift */,
-				0E1B324827BEB8EF00D51A18 /* FocusRing.swift */,
-				0E1B324E27BEB8EF00D51A18 /* Instantiation.swift */,
-				0E1B324327BEB8EF00D51A18 /* Model.swift */,
-				0E1B324527BEB8EF00D51A18 /* Parser.swift */,
-				0E1B324727BEB8EF00D51A18 /* Procedural.swift */,
-				0E1B324127BEB8EF00D51A18 /* Production.swift */,
-				0E1B323E27BEB8EF00D51A18 /* SlotAction.swift */,
-				0E1B324227BEB8EF00D51A18 /* SlotCondition.swift */,
-				0E1B324C27BEB8EF00D51A18 /* Support.swift */,
-				0E1B324927BEB8EF00D51A18 /* Temporal.swift */,
-				0E1B324B27BEB8EF00D51A18 /* Tokenizer.swift */,
-				0E1B324427BEB8EF00D51A18 /* Vision.swift */,
-			);
-			path = "Core ACT-R";
-			sourceTree = "<group>";
-		};
-		0E1B326127BEC39700D51A18 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0E1B326C27BFB8C500D51A18 /* Players */ = {
@@ -242,33 +228,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E1B325827BEB8EF00D51A18 /* Procedural.swift in Sources */,
-				0E1B324F27BEB8EF00D51A18 /* SlotAction.swift in Sources */,
-				0E1B325027BEB8EF00D51A18 /* BufferCondition.swift in Sources */,
-				0E1B325627BEB8EF00D51A18 /* Parser.swift in Sources */,
-				0E1B325727BEB8EF00D51A18 /* ACTRWindowView.swift in Sources */,
-				0E1B325C27BEB8EF00D51A18 /* Tokenizer.swift in Sources */,
-				0E1B325227BEB8EF00D51A18 /* Production.swift in Sources */,
-				0E1B325127BEB8EF00D51A18 /* Chunk.swift in Sources */,
-				0E1B325E27BEB8EF00D51A18 /* Declarative.swift in Sources */,
+				0E05B6252805AD11001087C1 /* Production.swift in Sources */,
 				0E1B321027BEB66900D51A18 /* ContentView.swift in Sources */,
-				0E1B325327BEB8EF00D51A18 /* SlotCondition.swift in Sources */,
-				0E1B325527BEB8EF00D51A18 /* Vision.swift in Sources */,
 				0E866E9727C79E2200A5FA9E /* LDViewModel.swift in Sources */,
-				0E1B325927BEB8EF00D51A18 /* FocusRing.swift in Sources */,
+				0E05B61A2805AD11001087C1 /* Procedural.swift in Sources */,
 				0E1B326527BECBA700D51A18 /* GameView.swift in Sources */,
-				0E1B325F27BEB8EF00D51A18 /* Instantiation.swift in Sources */,
 				0E1B326327BEC41A00D51A18 /* Opponent.swift in Sources */,
-				0E1B325A27BEB8EF00D51A18 /* Temporal.swift in Sources */,
+				0E05B61D2805AD11001087C1 /* Vision.swift in Sources */,
 				0E1B326727BFACA200D51A18 /* Game.swift in Sources */,
+				0E05B61E2805AD11001087C1 /* Tokenizer.swift in Sources */,
+				0E05B6182805AD11001087C1 /* BufferCondition.swift in Sources */,
+				0E05B6202805AD11001087C1 /* BufferAction.swift in Sources */,
+				0E05B61B2805AD11001087C1 /* Instantiation.swift in Sources */,
+				0E05B6192805AD11001087C1 /* Model.swift in Sources */,
+				0E05B6222805AD11001087C1 /* Parser.swift in Sources */,
+				0E05B6232805AD11001087C1 /* Declarative.swift in Sources */,
 				0E1B326E27BFB8DA00D51A18 /* Player.swift in Sources */,
+				0E05B61F2805AD11001087C1 /* SlotCondition.swift in Sources */,
+				0E05B6212805AD11001087C1 /* Support.swift in Sources */,
+				0E05B6172805AD11001087C1 /* SlotAction.swift in Sources */,
 				0E1B326927BFAD9300D51A18 /* Hand.swift in Sources */,
 				0E1B326B27BFB2CF00D51A18 /* Bid.swift in Sources */,
+				0E05B61C2805AD11001087C1 /* Temporal.swift in Sources */,
 				0E1B320E27BEB66900D51A18 /* Liars_diceApp.swift in Sources */,
 				0E53F19E27F894B300147121 /* RulesView.swift in Sources */,
-				0E1B325427BEB8EF00D51A18 /* Model.swift in Sources */,
-				0E1B325D27BEB8EF00D51A18 /* Support.swift in Sources */,
-				0E1B325B27BEB8EF00D51A18 /* BufferAction.swift in Sources */,
+				0E05B6242805AD11001087C1 /* Chunk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

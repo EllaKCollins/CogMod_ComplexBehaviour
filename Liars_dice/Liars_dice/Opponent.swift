@@ -12,8 +12,16 @@ class Opponent: Player {
     var step_num = 0
     
     func load_model(){
-        model.loadModel(fileName: "liarsDice")
-        model.run()
+        let m = readModel(filename: self.name)
+        if m == nil {
+            print("loaded")
+            model.loadModel(fileName: "liarsDice")
+            model.run()
+        }else {
+            print("other")
+            print(m!)
+            model = m!
+        }
     }
     
     override func run_opponent() -> (String, String){
@@ -64,6 +72,12 @@ class Opponent: Player {
             chunk.setSlot(slot: "totaldie", value: Double(total_die))
             model.dm.addToDM(chunk)
         }
+    }
+    
+    override func save_model() {
+        print("saving as ..", self.name)
+        writeModel(filename: self.name, model: model)
+        print("tried to save")
     }
     
 }

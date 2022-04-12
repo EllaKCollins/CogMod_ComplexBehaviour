@@ -28,4 +28,6 @@ class Player {
     func send_hand(total_die: Int){}
     
     func send_reasonable_bids(reasonable_bids: [Bid], total_die: Int){}
+    
+    func save_model(){}
 }

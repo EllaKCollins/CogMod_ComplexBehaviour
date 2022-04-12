@@ -30,7 +30,7 @@ struct Game{
     
     init(num_players: Int, hand_size: Int) {
         self.num_players = num_players
-        self.hand_size = hand_size
+        self.hand_size = 2 //hand_size
         players.append(Player(name: "You", num_die: self.hand_size, still_in: true))
         self.total_die = self.num_players * self.hand_size
         for i in 1...(num_players-1) {
@@ -48,9 +48,12 @@ struct Game{
         still_bidding = false
         var winner = "no one"
         for player in players {
+            print("saving....", player.name)
+            player.save_model()
+            print(players)
             if player.still_in {
                 winner = player.name
-                break
+                //break
             }
         }
         self.total_die = self.num_players * self.hand_size
@@ -303,7 +306,7 @@ struct Game{
         }
         var reasonable_bids: [Bid] = []
         for bid in bids {
-            if arr[face_dict[bid.face]!] >= bid.num {
+            if arr[face_dict[bid.face]!-1] >= bid.num {
                 reasonable_bids.append(bid)
             }
         }
