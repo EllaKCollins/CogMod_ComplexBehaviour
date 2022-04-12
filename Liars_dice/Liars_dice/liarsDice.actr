@@ -22,7 +22,7 @@
     (bidnumber14 isa bidnumber number 14 nextnumber 15 previous 13)
     
     ;;bidfaces
-    (bidface0 isa bidface face zero nextface one previous nil)
+    ;;(bidface0 isa bidface face zero nextface one previous nil)
     (bidface1 isa bidface face one nextface two previous six)
     (bidface2 isa bidface face two nextface three previous one)
     (bidface3 isa bidface face three nextface four previous two)
@@ -30,14 +30,223 @@
     (bidface5 isa bidface face five nextface six previous four)
     (bidface6 isa bidface face six nextface one previous five)
     
-    ;(chunk-type isa current-state handone handtwo handthree handfour handfive handsix totaldie bidface bidnumber reasonable)
-    
-    ;;dummy data that was used for testing
-    ;;(dummy-state1 isa current-state handone 5 handtwo 1 handthree 1 handfour 0 handfive 0 handsix 0 totaldie 15 bidface two bidnumber 1 reasonable 0)
-    (dummy-state1 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 15)
-    (dummy-state2 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 15)
-    (dummy-state3 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 15)
-    (dummy-state4 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 15)
+    ;;DM for reasonable bids
+    (bid1115 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 15)
+    (bid1215 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 15)
+    (bid1315 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 15)
+    (bid1415 isa current-state bidface one bidnumber 4 reasonable 1 totaldie 15)
+    (bid2115 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 15)
+    (bid2215 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 15)
+    (bid2315 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 15)
+    (bid2415 isa current-state bidface two bidnumber 4 reasonable 1 totaldie 15)
+    (bid3115 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 15)
+    (bid3215 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 15)
+    (bid3315 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 15)
+    (bid3415 isa current-state bidface three bidnumber 4 reasonable 1 totaldie 15)
+    (bid4115 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 15)
+    (bid4215 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 15)
+    (bid4315 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 15)
+    (bid4415 isa current-state bidface four bidnumber 4 reasonable 1 totaldie 15)
+    (bid5115 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 15)
+    (bid5215 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 15)
+    (bid5315 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 15)
+    (bid5415 isa current-state bidface five bidnumber 4 reasonable 1 totaldie 15)
+    (bid6115 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 15)
+    (bid6215 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 15)
+    (bid6315 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 15)
+    (bid6415 isa current-state bidface six bidnumber 4 reasonable 1 totaldie 15)
+    (bid1114 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 14)
+    (bid1214 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 14)
+    (bid1314 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 14)
+    (bid1414 isa current-state bidface one bidnumber 4 reasonable 1 totaldie 14)
+    (bid2114 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 14)
+    (bid2214 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 14)
+    (bid2314 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 14)
+    (bid2414 isa current-state bidface two bidnumber 4 reasonable 1 totaldie 14)
+    (bid3114 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 14)
+    (bid3214 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 14)
+    (bid3314 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 14)
+    (bid3414 isa current-state bidface three bidnumber 4 reasonable 1 totaldie 14)
+    (bid4114 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 14)
+    (bid4214 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 14)
+    (bid4314 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 14)
+    (bid4414 isa current-state bidface four bidnumber 4 reasonable 1 totaldie 14)
+    (bid5114 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 14)
+    (bid5214 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 14)
+    (bid5314 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 14)
+    (bid5414 isa current-state bidface five bidnumber 4 reasonable 1 totaldie 14)
+    (bid6114 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 14)
+    (bid6214 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 14)
+    (bid6314 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 14)
+    (bid6414 isa current-state bidface six bidnumber 4 reasonable 1 totaldie 14)
+    (bid1113 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 13)
+    (bid1213 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 13)
+    (bid1313 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 13)
+    (bid1413 isa current-state bidface one bidnumber 4 reasonable 1 totaldie 13)
+    (bid2113 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 13)
+    (bid2213 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 13)
+    (bid2313 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 13)
+    (bid2413 isa current-state bidface two bidnumber 4 reasonable 1 totaldie 13)
+    (bid3113 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 13)
+    (bid3213 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 13)
+    (bid3313 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 13)
+    (bid3413 isa current-state bidface three bidnumber 4 reasonable 1 totaldie 13)
+    (bid4113 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 13)
+    (bid4213 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 13)
+    (bid4313 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 13)
+    (bid4413 isa current-state bidface four bidnumber 4 reasonable 1 totaldie 13)
+    (bid5113 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 13)
+    (bid5213 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 13)
+    (bid5313 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 13)
+    (bid5413 isa current-state bidface five bidnumber 4 reasonable 1 totaldie 13)
+    (bid6113 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 13)
+    (bid6213 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 13)
+    (bid6313 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 13)
+    (bid6413 isa current-state bidface six bidnumber 4 reasonable 1 totaldie 13)
+    (bid1112 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 12)
+    (bid1212 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 12)
+    (bid1312 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 12)
+    (bid1412 isa current-state bidface one bidnumber 4 reasonable 1 totaldie 12)
+    (bid2112 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 12)
+    (bid2212 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 12)
+    (bid2312 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 12)
+    (bid2412 isa current-state bidface two bidnumber 4 reasonable 1 totaldie 12)
+    (bid3112 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 12)
+    (bid3212 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 12)
+    (bid3312 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 12)
+    (bid3412 isa current-state bidface three bidnumber 4 reasonable 1 totaldie 12)
+    (bid4112 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 12)
+    (bid4212 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 12)
+    (bid4312 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 12)
+    (bid4412 isa current-state bidface four bidnumber 4 reasonable 1 totaldie 12)
+    (bid5112 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 12)
+    (bid5212 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 12)
+    (bid5312 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 12)
+    (bid5412 isa current-state bidface five bidnumber 4 reasonable 1 totaldie 12)
+    (bid6112 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 12)
+    (bid6212 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 12)
+    (bid6312 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 12)
+    (bid6412 isa current-state bidface six bidnumber 4 reasonable 1 totaldie 12)
+    (bid1111 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 11)
+    (bid1211 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 11)
+    (bid1311 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 11)
+    (bid2111 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 11)
+    (bid2211 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 11)
+    (bid2311 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 11)
+    (bid3111 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 11)
+    (bid3211 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 11)
+    (bid3311 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 11)
+    (bid4111 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 11)
+    (bid4211 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 11)
+    (bid4311 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 11)
+    (bid5111 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 11)
+    (bid5211 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 11)
+    (bid5311 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 11)
+    (bid6111 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 11)
+    (bid6211 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 11)
+    (bid6311 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 11)
+    (bid1110 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 10)
+    (bid1210 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 10)
+    (bid1310 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 10)
+    (bid2110 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 10)
+    (bid2210 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 10)
+    (bid2310 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 10)
+    (bid3110 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 10)
+    (bid3210 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 10)
+    (bid3310 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 10)
+    (bid4110 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 10)
+    (bid4210 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 10)
+    (bid4310 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 10)
+    (bid5110 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 10)
+    (bid5210 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 10)
+    (bid5310 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 10)
+    (bid6110 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 10)
+    (bid6210 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 10)
+    (bid6310 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 10)
+    (bid119 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 9)
+    (bid129 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 9)
+    (bid139 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 9)
+    (bid219 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 9)
+    (bid229 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 9)
+    (bid239 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 9)
+    (bid319 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 9)
+    (bid329 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 9)
+    (bid339 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 9)
+    (bid419 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 9)
+    (bid429 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 9)
+    (bid439 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 9)
+    (bid519 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 9)
+    (bid529 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 9)
+    (bid539 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 9)
+    (bid619 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 9)
+    (bid629 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 9)
+    (bid639 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 9)
+    (bid118 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 8)
+    (bid128 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 8)
+    (bid138 isa current-state bidface one bidnumber 3 reasonable 1 totaldie 8)
+    (bid218 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 8)
+    (bid228 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 8)
+    (bid238 isa current-state bidface two bidnumber 3 reasonable 1 totaldie 8)
+    (bid318 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 8)
+    (bid328 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 8)
+    (bid338 isa current-state bidface three bidnumber 3 reasonable 1 totaldie 8)
+    (bid418 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 8)
+    (bid428 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 8)
+    (bid438 isa current-state bidface four bidnumber 3 reasonable 1 totaldie 8)
+    (bid518 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 8)
+    (bid528 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 8)
+    (bid538 isa current-state bidface five bidnumber 3 reasonable 1 totaldie 8)
+    (bid618 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 8)
+    (bid628 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 8)
+    (bid638 isa current-state bidface six bidnumber 3 reasonable 1 totaldie 8)
+    (bid117 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 7)
+    (bid127 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 7)
+    (bid217 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 7)
+    (bid227 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 7)
+    (bid317 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 7)
+    (bid327 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 7)
+    (bid417 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 7)
+    (bid427 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 7)
+    (bid517 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 7)
+    (bid527 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 7)
+    (bid617 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 7)
+    (bid627 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 7)
+    (bid116 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 6)
+    (bid126 isa current-state bidface one bidnumber 2 reasonable 1 totaldie 6)
+    (bid216 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 6)
+    (bid226 isa current-state bidface two bidnumber 2 reasonable 1 totaldie 6)
+    (bid316 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 6)
+    (bid326 isa current-state bidface three bidnumber 2 reasonable 1 totaldie 6)
+    (bid416 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 6)
+    (bid426 isa current-state bidface four bidnumber 2 reasonable 1 totaldie 6)
+    (bid516 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 6)
+    (bid526 isa current-state bidface five bidnumber 2 reasonable 1 totaldie 6)
+    (bid616 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 6)
+    (bid626 isa current-state bidface six bidnumber 2 reasonable 1 totaldie 6)
+    (bid115 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 5)
+    (bid215 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 5)
+    (bid315 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 5)
+    (bid415 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 5)
+    (bid515 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 5)
+    (bid615 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 5)
+    (bid114 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 4)
+    (bid214 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 4)
+    (bid314 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 4)
+    (bid414 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 4)
+    (bid514 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 4)
+    (bid614 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 4)
+    (bid113 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 3)
+    (bid213 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 3)
+    (bid313 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 3)
+    (bid413 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 3)
+    (bid513 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 3)
+    (bid613 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 3)
+    (bid112 isa current-state bidface one bidnumber 1 reasonable 1 totaldie 2)
+    (bid212 isa current-state bidface two bidnumber 1 reasonable 1 totaldie 2)
+    (bid312 isa current-state bidface three bidnumber 1 reasonable 1 totaldie 2)
+    (bid412 isa current-state bidface four bidnumber 1 reasonable 1 totaldie 2)
+    (bid512 isa current-state bidface five bidnumber 1 reasonable 1 totaldie 2)
+    (bid612 isa current-state bidface six bidnumber 1 reasonable 1 totaldie 2)
     (bufferbuffer isa bufferfill crash dont)
     (start-goal isa goal state start)
 )
@@ -54,62 +263,21 @@
     =goal>
         state got-hand
 )
-(p start-first-hard-code
-    =action>
-        first true
-==>
-    +action>
-    bidface one
-    bidnumber 1
-    challenge no
-   =goal>
-    state bid-done
-)
 (p start-first
-    =goal>
-        state got-hand
     =action>
-        isa move
         first true
-        bidface =currentbidface
-        bidnumber =currentbidnumber
-        totaldie =totaldie
-        handone =handone
-        handtwo =handtwo
-        handthree =handthree
-        handfour =handfour
-        handfive =handfive
-        handsix =handsix
 ==>
+    =action>
+        challenge false
     =goal>
         state make-bid
-        reasonable 1
         bidface one
         bidnumber 1
-        totaldie =totaldie
-        handone =handone
-        handtwo =handtwo
-        handthree =handthree
-        handfour =handfour
-        handfive =handfive
-        handsix =handsix
-    =retrieval>
-        bidface one
-        bidnumber 1
-        totaldie =totaldie
-        handone =handone
-        handtwo =handtwo
-        handthree =handthree
-        handfour =handfour
-        handfive =handfive
-        handsix =handsix
+        challenge no
 )
-(p start
-    =goal>
-        isa goal
-        state got-hand
+
+(p first-false
     =action>
-        isa move
         first false
         bidface =currentbidface
         bidnumber =currentbidnumber
@@ -122,7 +290,8 @@
         handsix =handsix
 ==>
     =goal>
-        state retrieving-state
+        state start-start
+        first false
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
@@ -132,6 +301,21 @@
         handfour =handfour
         handfive =handfive
         handsix =handsix
+)
+
+(p start-start
+    =goal>
+        state start-start
+        bidface =currentbidface
+        bidnumber =currentbidnumber
+        totaldie =totaldie
+        handone =handone
+        handtwo =handtwo
+        handthree =handthree
+        handfour =handfour
+        handfive =handfive
+        handsix =handsix
+==>
     =retrieval>
         bidface =currentbidface
         bidnumber =currentbidnumber
@@ -142,6 +326,8 @@
         handfour =handfour
         handfive =handfive
         handsix =handsix
+    =goal>
+        state retrieving-state
 )
 
 ;;if current-state in memory with reasonable=1
@@ -155,13 +341,14 @@
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
+        first false
 ==>
+    -retrieval>
     +retrieval>
-        isa current-state
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
-        reasonable 1
+        reasonable 1.0
     =goal>
         state clear-memory
         reasonable 1
@@ -179,22 +366,14 @@
         handfour =handfour
         handfive =handfive
         handsix =handsix
+        reasonable 1
     =retrieval>
         reasonable 1
 ==>
     =goal>
         state make-bid
+    -retrieval>
     =retrieval>
-        bidface =currentbidface
-        bidnumber =currentbidnumber
-        totaldie =totaldie
-        handone =handone
-        handtwo =handtwo
-        handthree =handthree
-        handfour =handfour
-        handfive =handfive
-        handsix =handsix
-    =action>
         bidface =currentbidface
         bidnumber =currentbidnumber
         totaldie =totaldie
@@ -218,19 +397,29 @@
         state challenged
     +retrieval>
         isa bufferfill
-    -action>
 )
 
-(p is-challenged
+;(p is-challenged
+;    =goal>
+;        state challenged
+;==>
+;    +action>
+;        challenge challenge
+;        bidface zero
+;        bidnumber 0
+;    =goal>
+;        state stop
+;)
+(p is-challenged2
     =goal>
         state challenged
+    =retrieval>
+        isa bufferfill
 ==>
     +action>
         challenge challenge
-        bidface one
-        bidnumber 1
-    =goal>
-        state done
+        bidface zero
+        bidnumber 0
 )
 
 (p first-challenge-failure
@@ -240,6 +429,7 @@
         first true
 ==>
     =action>
+        challenge no
         bidface one
         bidnumber 1
     =goal>
@@ -274,9 +464,9 @@
     =goal>
         bidnumber =num1
         bidface =bidface
-        state bid-done
+        state done
     +action>
-        challenge no
+        challenge false
         bidnumber =num1
         bidface =bidface
     
@@ -329,7 +519,7 @@
         face =face1
 ==>
     =goal>
-        state bid-done
+        state done
         bidface =face1
     +action>
         bidnumber =bidnumber
@@ -394,6 +584,7 @@
     =goal>
         state make-bid
         bidface =face1
+    -retrieval>
     =retrieval>
         isa current-state
         bidface =face1
@@ -408,14 +599,6 @@
         reasonable 1
     =action>
         bidface =face1
-        bidnumber =currentbidnumber
-        totaldie =die
-        handone =one
-        handtwo =two
-        handthree =three
-        handfour =four
-        handfive =five
-        handsix =six
     -imaginal>
 )
 
@@ -428,8 +611,6 @@
         bidface one
         reasonable 1
         >= handone 1
-    =retrieval>
-        isa current-state
 ==>
     =goal>
         state retrieve-number
@@ -442,8 +623,6 @@
         bidface two
         reasonable 1
         >= handtwo 1
-    =retrieval>
-         isa current-state
 ==>
     =goal>
         inhand 1
@@ -456,8 +635,6 @@
         state make-bid
         bidface three
         reasonable 1
-    =retrieval>
-        isa current-state
         >= handthree 1
 ==>
     =goal>
@@ -470,8 +647,6 @@
         state make-bid
         bidface four
         reasonable 1
-    =retrieval>
-        isa current-state
         >= handfour 1
 ==>
     =goal>
@@ -484,8 +659,6 @@
         state make-bid
         bidface five
         reasonable 1
-    =retrieval>
-        isa current-state
         >= handfive 1
 ==>
     =goal>
@@ -498,8 +671,6 @@
         state make-bid
         bidface six
         reasonable 1
-    =retrieval>
-        isa current-state
         >= handsix 1
 ==>
     =goal>
@@ -525,9 +696,6 @@
         bidface one
         reasonable 1
         < handone 1
-    =retrieval>
-        isa current-state
-        ;;< handone 1
 ==>
     =goal>
         state retrieve-face
@@ -539,9 +707,6 @@
         bidface two
         reasonable 1
         < handtwo 1
-    =retrieval>
-        isa current-state
-         
 ==>
     =goal>
         state retrieve-face
@@ -552,8 +717,6 @@
         state make-bid
         bidface three
         reasonable 1
-    =retrieval>
-        isa current-state
         < handthree 1
 ==>
     =goal>
@@ -566,8 +729,6 @@
         state make-bid
         bidface four
         reasonable 1
-    =retrieval>
-        isa current-state
         < handfour 1
 ==>
     =goal>
@@ -580,8 +741,6 @@
         state make-bid
         bidface five
         reasonable 1
-    =retrieval>
-        isa current-state
         < handfive 1
 ==>
     =goal>
@@ -594,14 +753,11 @@
         state make-bid
         bidface six
         reasonable 1
-    =retrieval>
-        isa current-state
         < handsix 1
 ==>
     =goal>
         state retrieve-next-face-six
     =retrieval>
         bidface six
-        
 )
 (goal-focus start-goal)
