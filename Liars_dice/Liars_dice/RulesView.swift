@@ -9,14 +9,16 @@ struct RulesView: View {
             ScrollView{
                 VStack (alignment: .leading){
                     Group {
-                        Text("Nature of the Game:")
+                        Text("Nature of Liar's Dice")
                             .bold()
+                            .frame(maxWidth: .infinity, alignment: .center)
                         Text("Liar's Dice is a bluffing game where you want to deceive, but also detect deceptions of the other players.")
                     }
                     Spacer()
                     Group {
-                        Text("How it is played:")
+                        Text("How to play:")
                             .bold()
+                            .frame(maxWidth: .infinity, alignment: .center)
                         Text("• Each player starts with 5 die, that are rolled at the start of the game. Every player's dice are hidden from every other player")
                         Text("• The starting player makes a bid, which is a guess of at least how many of a certain die face there are present in all the combined die")
                         Text("• The next player can then choose to bid, in which case their bid must conform to one of three rules: Given the bid 2 fours")
@@ -34,6 +36,7 @@ struct RulesView: View {
                         Text("• These steps are repeated until only one player is left, and they are the winner")
                         Text("Good luck!")
                             .bold()
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
             }
