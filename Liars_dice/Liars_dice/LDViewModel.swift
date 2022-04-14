@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ This class is used to communicate between the model and the view. It passes information back and forth. It is observed by the view.
+ */
 
 class LDViewModel: ObservableObject {
     @Published private var model = Game(num_players: 3, hand_size: 5)

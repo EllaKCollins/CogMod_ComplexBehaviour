@@ -64,7 +64,6 @@
 		0E1B326827BFAD9300D51A18 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		0E1B326A27BFB2CF00D51A18 /* Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
 		0E1B326D27BFB8DA00D51A18 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		0E38268427F23D4300B186DE /* liars_2.actr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = liars_2.actr.h; sourceTree = "<group>"; };
 		0E53F19D27F894B300147121 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		0E866E9627C79E2200A5FA9E /* LDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDViewModel.swift; sourceTree = "<group>"; };
 		0EB523FC27C62FB100A94F4C /* liarsDice.actr */ = {isa = PBXFileReference; lastKnownFileType = text; path = liarsDice.actr; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 				0E1B326C27BFB8C500D51A18 /* Players */,
 				0E1B320D27BEB66900D51A18 /* Liars_diceApp.swift */,
 				0E1B320F27BEB66900D51A18 /* ContentView.swift */,
-				0E38268427F23D4300B186DE /* liars_2.actr.h */,
 				0EB523FC27C62FB100A94F4C /* liarsDice.actr */,
 				0E1B326227BEC41A00D51A18 /* Opponent.swift */,
 				0E1B326D27BFB8DA00D51A18 /* Player.swift */,

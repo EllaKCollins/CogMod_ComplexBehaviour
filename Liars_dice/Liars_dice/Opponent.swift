@@ -7,17 +7,21 @@
 
 import Foundation
 
+/**
+ This class is a sub-class of Player and is for the opponent. It loads the act-r model and has functions to send information to and from the act-r model.
+ */
+
 class Opponent: Player {
     var model = Model()
     var step_num = 0
     
     func load_model(){
         model.loadModel(fileName: "liarsDice")
-        model.run(maxTime: 1000000)
+        model.run(maxTime: 99999999999999999999)
     }
     
     override func run_opponent() -> (String, String){
-        model.run(maxTime: 1000000)
+        model.run(maxTime: 99999999999999999999)
         let decision = model.lastAction(slot: "challenge")!
         if (String(decision) != "challenge") {
             let face = model.lastAction(slot: "bidface")!

@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ This class is for the bids made by the players.
+ */
+
 class Bid {
     var face: String
     var num: Int

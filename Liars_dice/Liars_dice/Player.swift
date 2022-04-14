@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ This class implements the player. It has the name of the player, the hand of the player and a boolean showing whether the player still has dice in tehir hand.
+ */
+
 class Player {
     var hand: Hand
     var name: String

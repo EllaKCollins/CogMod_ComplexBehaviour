@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ This struct includes all the important information about the game. All the logic of the game is dealt with and stored here.
+ */
+
 struct Game{
     var num_players: Int
     var bids: [Bid] = []
@@ -214,14 +218,21 @@ struct Game{
     }
     
     mutating func model_run(){
+        print("running the model..")
         if !bids.isEmpty{
             let last_bid = bids.last!
             players[current_player].send_info(last_bid: last_bid, total_die: total_die, first_bid: false)
         }
         else {
             players[current_player].send_info(last_bid: Bid(face: "zero", num: 0), total_die: total_die, first_bid: true)
+            print("sent")
         }
-        let (face, num) = players[current_player].run_opponent()
+        var (face, num) = players[current_player].run_opponent()
+        
+        if face == "challenge" && bids.isEmpty {
+            print("hi")
+            (face, num) = players[current_player].run_opponent()
+        }
         
         if face == "challenge" {
             change_challenge()

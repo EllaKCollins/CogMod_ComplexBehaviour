@@ -8,17 +8,9 @@
 import Foundation
 import SwiftUI
 
-/* TODO: ideas
-    horizontal layout
-    show opponent die as blank cubes/squares
-    bid on one side and challenge on the other
-    bidding:
-        - last bid number +  with die face click to change
-        - and + can be not allowed buttons
-        "bid" button below : unavailable for not allowed bid
-    dice is removed physically
-    
- */
+/**
+  This struct is for the View of the Game and displays all the dice and bids made by the players.
+*/
 
 struct GameView: View {
     @ObservedObject var viewModel: LDViewModel

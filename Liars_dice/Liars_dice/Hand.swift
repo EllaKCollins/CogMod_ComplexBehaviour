@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ This class is the hand of the player. Each player has an instance of this class to represent the dice in their hand.
+ */
+
 class Hand {
     var num_die: Int
     var faces: [String] = []

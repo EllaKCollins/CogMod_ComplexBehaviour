@@ -2,6 +2,10 @@
 import SwiftUI
 import Foundation
 
+/**
+ This view is for the rules of the game.
+ */
+
 struct RulesView: View {
     
     var body: some View {
