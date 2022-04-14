@@ -29,7 +29,7 @@ struct GameView: View {
             Spacer()
             HStack {
                 // Opponent stuff here
-                if viewModel.current_player == 1 && viewModel.still_bidding { //  && viewModel.players[1]
+                if viewModel.current_player == 1 && viewModel.still_bidding {
                     Text("Opponent 1")
                         .font(.headline)
                         .padding(.all, 12.0)
@@ -252,7 +252,6 @@ struct GameView: View {
                         .stroke(Color("base_colour"), lineWidth: 2))
                 .accentColor(Color("base_colour"))
                 Button {
-                    // implement bidding here !
                     viewModel.human_bid()
 
                 } label: {
@@ -297,7 +296,6 @@ struct GameView: View {
                 .disabled((viewModel.current_player != 0) || !viewModel.still_bidding || viewModel.bids.isEmpty)
                 .cornerRadius(16)
                 .accentColor(Color("base_colour"))
-                // Color(red: 0.719, green: 0.002, blue: 0.312)
             }
         }
         .padding()

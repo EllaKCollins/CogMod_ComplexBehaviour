@@ -44,7 +44,9 @@ struct Game{
         }
     }
     
-    
+    /**
+     this function is called when there is only one player left in the game. It returns this player.
+     */
     mutating func end_game() -> String {
         disable_plus = true
         disable_minus = true
@@ -62,6 +64,9 @@ struct Game{
         return winner
     }
     
+    /**
+     this function is called at the start of each round. It initialises each player's hand.
+     */
     mutating func start_round(){
         current_player = starting_player
         challenged = false
@@ -73,6 +78,9 @@ struct Game{
         }
     }
     
+    /**
+     this is the function called by the roll button in the view. It initializes all the necessary variables.
+     */
     mutating func roll(){
         if game_over {
             for player in players {
@@ -90,6 +98,9 @@ struct Game{
         check_button_disable()
     }
     
+    /**
+     this function changes the face of the dice for bidding in the view.
+     */
     mutating func change_current_bid_dice(){
         switch self.current_bid_dice {
         case "one": current_bid_dice = "two"
@@ -103,6 +114,9 @@ struct Game{
         check_valid_bid()
     }
     
+    /**
+     this function checks whether the current shown bid in the view is a valid bid or not. This makes the bid button avaliable or unavailable.
+     */
     mutating func check_valid_bid(){
         if bids.isEmpty == false {
             if current_bid_dice == bids.last!.face && possible_bid_num <= bids.last!.num {
@@ -120,6 +134,9 @@ struct Game{
         }
     }
     
+    /**
+     this function checks whether the plus or minus button should be available based on the previous bid made.
+     */
     mutating func check_button_disable() {
         if possible_bid_num == total_die {
             disable_plus = true
@@ -135,6 +152,9 @@ struct Game{
         }
     }
     
+    /**
+     this function changes the bid number shown in the view for the human bid.
+     */
     mutating func change_bid_num(action: String){
         switch action {
         case "+":
@@ -152,8 +172,6 @@ struct Game{
         check_valid_bid()
     }
     
-    /* when this is called also show the die in the ui,
-     make challege is correct remove die from bidder */
     /**
        Returns true if the challenge is successful, else fasle
      */
@@ -171,6 +189,9 @@ struct Game{
         return true
     }
     
+    /**
+     this function retrieves the previous player in the line of players.
+     */
     func retrieve_previous_player(current: Int) -> Int {
         var new_player = current
         if current == 0 {
@@ -187,6 +208,9 @@ struct Game{
         return retrieve_previous_player(current: new_player)
     }
     
+    /**
+     this function retrives the next player in the line of players.
+     */
     func retrieve_next_player(current: Int) -> Int {
         var new_player = current
         if current == (num_players - 1) {
@@ -203,12 +227,17 @@ struct Game{
         return retrieve_next_player(current: new_player)
     }
     
+    /**
+     this function is called when the bidding in a round is stopped and helps make changes occur in the view.
+     */
     mutating func stop_bidding(){
         still_bidding = false
     }
     
+    /**
+     this function is called when the user makes a bid. It adds the bid to the list of bids and passes the current player to the next player.
+     */
     mutating func human_bid(){
-        // human player
         let cur_bid = Bid(face: current_bid_dice, num: possible_bid_num)
         bids.append(cur_bid)
         
@@ -217,6 +246,9 @@ struct Game{
         check_valid_bid()
     }
     
+    /**
+     this function is called to have either of the act-r  run and deals with the logic of their responses.
+     */
     mutating func model_run(){
         print("running the model..")
         if !bids.isEmpty{
@@ -249,12 +281,18 @@ struct Game{
         }
     }
     
+    /**
+     this function is called when a player challenges a bid. It allows changes in the variables to show up in the view before the result of the challenge is shown.
+     */
     mutating func change_challenge() {
         still_bidding = false
         challenged = true
         challenge_over = false
     }
     
+    /**
+     this function goes through the bids made in a round and determines the bids that would have been correct.
+     */
     func determine_reasonable() -> [Bid]{
         let faces = ["one", "two", "three", "four", "five", "six"]
         var arr = [0, 0, 0, 0, 0, 0]
@@ -273,6 +311,9 @@ struct Game{
         return reasonable_bids
     }
     
+    /**
+     this function deals with the logic of challenging a bid. It calls the function that determines the winner, removes a dice from the looser's hand and changes the current player. Also, the reasonable bids are sent to the act-r models for the instance based learning.
+     */
     mutating func challenge_bid() -> Int {
         
         let challenged_index = retrieve_previous_player(current: current_player)

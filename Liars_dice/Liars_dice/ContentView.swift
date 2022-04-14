@@ -36,7 +36,7 @@ struct ContentView: View {
                                 .frame(width: 40, height: 40)
                                 
                     }
-                        .foregroundColor(Color("base_colour"))  // 3, 4, 94
+                        .foregroundColor(Color("base_colour")) 
                     Spacer()
                     NavigationLink( destination: GameView(viewModel: viewModel) ) {
                             Text("Start game")

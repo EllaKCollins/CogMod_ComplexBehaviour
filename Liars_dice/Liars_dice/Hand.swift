@@ -19,11 +19,17 @@ class Hand {
         self.num_die = num_die
     }
     
+    /**
+     removes a dice from the hand
+     */
     func remove_dice(){
         num_die -= 1
         faces.removeLast()
     }
     
+    /**
+     rolls the dice in the hand
+     */
     func roll_die(){
         let options = ["one", "two", "three", "four", "five", "six"]
         faces = []
@@ -32,6 +38,9 @@ class Hand {
         }
     }
     
+    /**
+     counts the number of a specific face in the hand
+     */
     func count_face(face: String) -> Int{
         var count = 0
         for die in faces {

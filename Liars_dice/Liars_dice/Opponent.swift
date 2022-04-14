@@ -20,6 +20,9 @@ class Opponent: Player {
         model.run(maxTime: 99999999999999999999)
     }
     
+    /**
+     runs the act-r model one their turn.
+     */
     override func run_opponent() -> (String, String){
         model.run(maxTime: 99999999999999999999)
         let decision = model.lastAction(slot: "challenge")!
@@ -32,6 +35,9 @@ class Opponent: Player {
       
     }
     
+    /**
+     sends the important information to the act-r model.
+     */
     override func send_info(last_bid: Bid, total_die: Int, first_bid: Bool){
         send_hand(total_die: total_die)
         model.modifyLastAction(slot: "first", value: String(first_bid))
@@ -39,6 +45,9 @@ class Opponent: Player {
         model.modifyLastAction(slot: "bidnumber", value: String(last_bid.num))
     }
 
+    /**
+     sends the hand of the player to the act-r model.
+     */
     override func send_hand(total_die: Int){
         let poss = ["one", "two", "three", "four", "five", "six"]
         for x in poss {
@@ -48,6 +57,9 @@ class Opponent: Player {
         model.modifyLastAction(slot: "totaldie", value: String(total_die))
     }
     
+    /**
+     sends the reasonable bids at the end of a round to the act-r model.
+     */
     override func send_reasonable_bids(reasonable_bids: [Bid], total_die: Int){
         for bid in reasonable_bids {
             let name = "bid" + bid.face + String(bid.num) + String(total_die)
@@ -61,6 +73,9 @@ class Opponent: Player {
         }
     }
     
+    /**
+     saves the model.
+     */
     override func save_model() {
         writeModel(filename: self.name, model: model)
     }
