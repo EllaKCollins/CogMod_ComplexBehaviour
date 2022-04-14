@@ -108,14 +108,14 @@ struct GameView: View {
                         }
                         
                     }
-                    if viewModel.challenged && !viewModel.challenge_over {
+                    if viewModel.challenged && !viewModel.challenge_over && !viewModel.game_over {
                         Text("\(current_loser)")
                             .font(.headline)
                             .onReceive(timer) { _ in
                                 current_loser = viewModel.players[viewModel.challenge_bid()].name + " lost"
                             }
                         
-                    } else if viewModel.challenged && viewModel.challenge_over {
+                    } else if viewModel.challenged && viewModel.challenge_over && !viewModel.game_over {
                         Text("\(current_loser)")
                             .font(.headline)
                     }

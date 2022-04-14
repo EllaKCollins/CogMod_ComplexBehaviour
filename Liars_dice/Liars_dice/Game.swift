@@ -30,7 +30,7 @@ struct Game{
     
     init(num_players: Int, hand_size: Int) {
         self.num_players = num_players
-        self.hand_size = 2 //hand_size
+        self.hand_size = hand_size
         players.append(Player(name: "You", num_die: self.hand_size, still_in: true))
         self.total_die = self.num_players * self.hand_size
         for i in 1...(num_players-1) {
@@ -48,9 +48,7 @@ struct Game{
         still_bidding = false
         var winner = "no one"
         for player in players {
-            print("saving....", player.name)
             player.save_model()
-            print(players)
             if player.still_in {
                 winner = player.name
                 //break
@@ -62,8 +60,6 @@ struct Game{
     
     mutating func start_round(){
         current_player = starting_player
-        print("current player2: ", current_player)
-        print("starting player2: ", starting_player)
         challenged = false
         for player in players {
             if player.still_in {
@@ -88,8 +84,6 @@ struct Game{
         current_bid_dice = "one"
         check_valid_bid()
         check_button_disable()
-        print("roll: ", still_bidding, challenged)
-        print(current_player)
     }
     
     mutating func change_current_bid_dice(){
@@ -163,7 +157,9 @@ struct Game{
         let last_bid = bids.last
         var total = 0
         for player in players {
-            total += player.hand.count_face(face: last_bid!.face)
+            if player.still_in {
+                total += player.hand.count_face(face: last_bid!.face)
+            }
         }
         if total >= last_bid!.num {
             return false
@@ -218,74 +214,27 @@ struct Game{
     }
     
     mutating func model_run(){
-        // send last bid to model
-        let test = false // TODO: remove when actr works :)
-        if test {
-            print("Im trying")
-            let challenge = Int.random(in: 0..<4)
-            if challenge == 0 && !bids.isEmpty{
-                change_challenge()
-                check_button_disable()
-                check_valid_bid()
-            }
-            else {
-            let poss = ["one", "two", "three", "four", "five", "six"]
-            var temp_bid = Bid(face: poss[Int.random(in: 0..<6)], num: Int.random(in: 1..<(total_die/2)))
-                if !bids.isEmpty{
-                    let last_bid = bids.last!
-                    var count = 0
-                    while (temp_bid.num <= last_bid.num || (face_dict[temp_bid.face]! <= face_dict[last_bid.face]! && temp_bid.num == last_bid.num)) {
-                        temp_bid = Bid(face: poss[Int.random(in: 0..<6)], num: Int.random(in: 1..<(total_die/2)))
-                        count += 1
-                        if count > 20 {
-                            change_challenge()
-                            check_button_disable()
-                            check_valid_bid()
-                            break
-                        }
-                    }
-                    print("I did it!")
-                    if count < 20 {
-                        bids.append(temp_bid)
-                        current_player = retrieve_next_player(current: current_player)
-                        check_button_disable()
-                        check_valid_bid()
-                    }
-                        
-                }
-                else{
-                    bids.append(temp_bid)
-                    current_player = retrieve_next_player(current: current_player)
-                    check_button_disable()
-                    check_valid_bid()
-                }
-            }
+        if !bids.isEmpty{
+            let last_bid = bids.last!
+            players[current_player].send_info(last_bid: last_bid, total_die: total_die, first_bid: false)
         }
-        // not testing
         else {
-            if !bids.isEmpty{
-                let last_bid = bids.last!
-                players[current_player].send_info(last_bid: last_bid, total_die: total_die, first_bid: false)
-            }
-            else {
-                print("I have sent it nothing ")
-                players[current_player].send_info(last_bid: Bid(face: "zero", num: 0), total_die: total_die, first_bid: true)
-            }
-            let (face, num) = players[current_player].run_opponent()
+            players[current_player].send_info(last_bid: Bid(face: "zero", num: 0), total_die: total_die, first_bid: true)
+        }
+        let (face, num) = players[current_player].run_opponent()
+        
+        if face == "challenge" {
+            change_challenge()
+            check_button_disable()
+            check_valid_bid()
+        }
+        else {
+            let model_bid = Bid(face: face, num: Int(Double(num)!))
+            bids.append(model_bid)
             
-            if face == "challenge" {
-                change_challenge()
-                check_button_disable()
-                check_valid_bid()
-            }
-            else {
-                let model_bid = Bid(face: face, num: Int(Double(num)!))
-                bids.append(model_bid)
-                
-                current_player = retrieve_next_player(current: current_player)
-                check_button_disable()
-                check_valid_bid()
-            }
+            current_player = retrieve_next_player(current: current_player)
+            check_button_disable()
+            check_valid_bid()
         }
     }
     
@@ -322,7 +271,6 @@ struct Game{
         let challenge_result = determine_result()
         
         let reasonable_bids = determine_reasonable()
-        print("giving the models more info...")
         players[1].send_reasonable_bids(reasonable_bids: reasonable_bids, total_die: total_die)
         players[2].send_reasonable_bids(reasonable_bids: reasonable_bids, total_die: total_die)
         
@@ -340,8 +288,6 @@ struct Game{
                 challenger.still_in = false
                 starting_player = retrieve_next_player(current: current_player)
             }
-            print("current player: ", current_player)
-            print("starting player: ", starting_player)
         }
         total_die -= 1
         var count = 0

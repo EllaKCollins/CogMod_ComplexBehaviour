@@ -12,33 +12,18 @@ class Opponent: Player {
     var step_num = 0
     
     func load_model(){
-        let m = readModel(filename: self.name)
-        if m == nil {
-            print("loaded")
-            model.loadModel(fileName: "liarsDice")
-            model.run()
-        }else {
-            print("other")
-            print(m!)
-            model = m!
-        }
+        model.loadModel(fileName: "liarsDice")
+        model.run(maxTime: 1000000)
     }
     
     override func run_opponent() -> (String, String){
-        print("model is trying to run ...")
-        print(model.buffers)
-        model.run()
-        print("model has run ...")
-        print(model.trace)
-        print(model.buffers)
+        model.run(maxTime: 1000000)
         let decision = model.lastAction(slot: "challenge")!
         if (String(decision) != "challenge") {
             let face = model.lastAction(slot: "bidface")!
             let num = model.lastAction(slot: "bidnumber")!
-            print("model is bidding: " , face, num)
             return (face, num)
         }
-        print("model is ", decision)
         return (decision, "")
       
     }
@@ -57,13 +42,11 @@ class Opponent: Player {
             model.modifyLastAction(slot: "hand" + x, value: String(count))
         }
         model.modifyLastAction(slot: "totaldie", value: String(total_die))
-        print("we've sent this")
     }
     
     override func send_reasonable_bids(reasonable_bids: [Bid], total_die: Int){
         for bid in reasonable_bids {
             let name = "bid" + bid.face + String(bid.num) + String(total_die)
-            print("bid passed is: ",name)
             let chunk = Chunk(s: name, m: model)
             chunk.setSlot(slot: "isa", value: "current-state")
             chunk.setSlot(slot: "bidface", value: bid.face)
@@ -75,9 +58,7 @@ class Opponent: Player {
     }
     
     override func save_model() {
-        print("saving as ..", self.name)
         writeModel(filename: self.name, model: model)
-        print("tried to save")
     }
     
 }
