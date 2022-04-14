@@ -22,7 +22,8 @@
     (bidnumber14 isa bidnumber number 14 nextnumber 15 previous 13)
     
     ;;bidfaces
-    ;;(bidface0 isa bidface face zero nextface one previous nil)
+    (bidface0 isa bidface face zero nextface one previous nil)
+    (bidface11 isa bidface face one nextface two previous zero)
     (bidface1 isa bidface face one nextface two previous six)
     (bidface2 isa bidface face two nextface three previous one)
     (bidface3 isa bidface face three nextface four previous two)
@@ -273,7 +274,8 @@
         state make-bid
         bidface one
         bidnumber 1
-        challenge no
+        challenge false
+        reasonable 1
 )
 
 (p first-false
